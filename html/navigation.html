@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../styles/style.css" />
   </head>
   <body>
-    <nav class="navigation">
+    <nav id="primary-navigation" class="navigation">
       <a href="../index.html" class="navigation__logo">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@
         type="button"
         class="navigation__menu"
         aria-expanded="false"
-        hidden
+        aria-controls="primary-navigation"
       >
         <span class="visually-hidden">Menu</span>
         <img src="../assets/images/icon-hamburger-menu.svg" alt="" />
@@ -61,7 +61,7 @@
         <li>
           <a href="#">Recipes</a>
         </li>
-        <li class="navigation__list--link" hidden>
+        <li class="navigation__list--link">
           <a href="#">Browse recipes</a>
         </li>
       </ul>
