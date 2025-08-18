@@ -55,6 +55,11 @@
       inset 0 0 0 1px var(--clr-neutral-300),
       0 12px 22px -12px var(--clr-neutral-600);
   }
+
+  @media (max-width: 47.5em) {
+    top: 7.2rem;
+    width: calc(100% - 3.2rem);
+  }
 }
 
 .navigation__list li {

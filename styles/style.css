@@ -96,8 +96,15 @@
     margin-inline: var(--spacing-16);
     margin-block: var(--spacing-20);
 
-    @media (min-width: 65em) {
+    @media (min-width: 48em) {
+      margin-inline: var(--spacing-32);
+      margin-block-start: var(--spacing-32);
+      margin-block-end: var(--spacing-20);
+    }
+
+    @media (min-width: 75em) {
       margin-inline: auto;
+      margin-block: var(--spacing-20);
     }
   }
 }
