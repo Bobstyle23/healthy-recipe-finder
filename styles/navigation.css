@@ -1,5 +1,11 @@
 @import "variables.css";
 
+.header {
+  border-bottom: 1px solid var(--clr-neutral-300);
+  max-width: 144rem;
+  margin-inline: auto;
+}
+
 .navigation {
   display: grid;
   grid-template-columns: auto 1fr auto;
