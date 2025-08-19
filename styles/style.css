@@ -1,5 +1,9 @@
 @import "variables.css";
 
+@view-transition {
+  navigation: auto;
+}
+
 @layer reset {
   *,
   *::before,
