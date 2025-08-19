@@ -29,4 +29,4 @@ loadComponent("navigation", "../html/navigation.html").then(() => {
 });
 
 loadComponent("cta", "../html/cta.html");
-// loadComponent("footer", "../html/footer.html");
+loadComponent("footer", "../html/footer.html");
