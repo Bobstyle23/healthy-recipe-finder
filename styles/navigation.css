@@ -67,20 +67,10 @@
 }
 
 .navigation__link {
-  background-color: var(--clr-neutral-900);
   padding-inline: var(--spacing-16);
   padding-block: var(--spacing-12);
-  border-radius: var(--radius-10);
-  color: var(--clr-white);
   font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.4;
   letter-spacing: -0.05rem;
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    background-color: var(--clr-neutral-600);
-  }
 }
 
 @media (min-width: 64em) {
