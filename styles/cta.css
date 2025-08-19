@@ -11,6 +11,57 @@
   justify-items: center;
   gap: var(--spacing-32);
   text-align: center;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background: url(../assets/images/pattern-fork.svg) no-repeat top/cover;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    background: url(../assets/images/pattern-knife.svg) no-repeat top/cover;
+  }
+
+  @media (min-width: 48em) {
+    padding-block: var(--spacing-80);
+    padding-inline: 0;
+    gap: var(--spacing-40);
+
+    &::before {
+      bottom: -5.6rem;
+      left: -4.8rem;
+      width: 18rem;
+      height: 23rem;
+    }
+
+    &::after {
+      width: 17.2rem;
+      height: 17.2rem;
+      top: -5rem;
+      right: -2.1rem;
+    }
+  }
+
+  @media (min-width: 64em) {
+    padding-block: var(--spacing-96);
+
+    &::before {
+      width: 31.5rem;
+      height: 39rem;
+      top: 2.4rem;
+      left: -7.3rem;
+    }
+
+    &::after {
+      width: 33.8rem;
+      height: 33.8rem;
+      top: 2.4rem;
+      right: -7rem;
+    }
+  }
 }
 
 .cta__text {
@@ -28,6 +79,11 @@
   letter-spacing: -0.2rem;
   color: var(--clr-neutral-900);
   text-wrap: auto;
+  z-index: 1;
+
+  @media (min-width: 48em) {
+    font-size: 4.8rem;
+  }
 }
 
 .cta__desc {
