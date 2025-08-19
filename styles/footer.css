@@ -1,10 +1,15 @@
 .footer {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  row-gap: var(--spacing-24);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: var(--spacing-24);
   padding-block-start: var(--spacing-32);
   padding-block-end: var(--spacing-20);
+
+  @media (min-width: 48em) {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
 }
 
 .footer__icons {
@@ -31,4 +36,8 @@
   line-height: 1.5;
   letter-spacing: -0.03rem;
   color: var(--clr-neutral-900);
+
+  @media (min-width: 48em) {
+    order: -1;
+  }
 }
