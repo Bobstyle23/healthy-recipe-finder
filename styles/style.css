@@ -124,7 +124,6 @@
     font-family: Nunito;
     line-height: 1.4;
     color: var(--clr-white);
-    margin-inline-start: 4rem;
     transition: background-color 0.2s ease;
 
     &:hover {
