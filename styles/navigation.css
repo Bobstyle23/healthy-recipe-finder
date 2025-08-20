@@ -99,7 +99,7 @@
     display: none;
     flex-flow: column nowrap;
     position: absolute;
-    top: 9.2rem;
+    top: 7.2rem;
     left: 50%;
     transform: translate(-50%, 0);
     background-color: var(--clr-white);
@@ -140,7 +140,6 @@
 
 @media (max-width: 47.5em) {
   .navigation__list {
-    top: 7.2rem;
     width: calc(100% - 3.2rem);
   }
 }

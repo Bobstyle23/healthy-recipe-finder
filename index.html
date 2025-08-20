@@ -13,10 +13,47 @@
     <link href="styles/style.css" rel="stylesheet" />
   </head>
   <body>
-    <section id="navigation"></section>
+    <header id="navigation"></header>
     <div class="container">
+      <main class="main">
+        <section class="main__intro">
+          <header class="main__header">
+            <h1 class="main__title"><span>Healthy</span> meals, zero fuss</h1>
+            <p class="main__desc">
+              Discover eight quick, whole-food recipes that you can cook
+              tonight—no processed junk, no guesswork.
+            </p>
+            <a
+              href="#"
+              aria-label="Start exploring recipes"
+              class="main__link button"
+              >Start exploring</a
+            >
+          </header>
+          <picture class="main__image">
+            <source
+              srcset="./assets/images/image-home-hero-large.webp"
+              media="(min-width: 48em)"
+              type="image/webp"
+            />
+            <img
+              src="./assets/images/image-home-hero-small.webp"
+              alt="Woman making a salad with sliced cucumbers and broccoli"
+            />
+          </picture>
+        </section>
+        <section class="main__options">
+          <article class="main__option"></article>
+          <article class="main__option"></article>
+          <article class="main__option"></article>
+        </section>
+        <section class="main__usage">
+          <div></div>
+          <div></div>
+        </section>
+      </main>
       <section id="cta"></section>
-      <section id="footer"></section>
+      <footer id="footer"></footer>
     </div>
 
     <script type="module" src="./js/index.js"></script>
