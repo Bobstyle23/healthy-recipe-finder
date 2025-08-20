@@ -355,12 +355,27 @@
       padding-block-start: var(--spacing-80);
       row-gap: var(--spacing-40);
     }
+
+    @media (min-width: 64em) {
+      padding-block-start: var(--spacing-96);
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: var(--spacing-48);
+      align-items: center;
+    }
+
+    @media (min-width: 75em) {
+      grid-template-columns: auto 1fr;
+    }
   }
 
   .usage__text {
     display: flex;
     flex-flow: column nowrap;
     gap: var(--spacing-20);
+
+    @media (min-width: 64em) {
+      max-width: 50.9rem;
+    }
   }
 
   .usage__title {
@@ -407,5 +422,9 @@
 
   .usage__image img {
     border-radius: var(--radius-10);
+
+    @media (min-width: 48em) {
+      border-radius: var(--radius-16);
+    }
   }
 }
