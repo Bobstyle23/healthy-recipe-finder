@@ -9,6 +9,7 @@
   @media (min-width: 48em) {
     flex-flow: row nowrap;
     justify-content: space-between;
+    padding-block: var(--spacing-40);
   }
 }
 
