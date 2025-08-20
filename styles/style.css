@@ -344,4 +344,43 @@
     color: var(--clr-neutral-600);
     text-wrap: auto;
   }
+
+  .main__usage {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: var(--spacing-32);
+    padding-block-start: var(--spacing-64);
+  }
+
+  .usage__text {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: var(--spacing-20);
+  }
+
+  .usage__title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.2rem;
+    color: var(--clr-neutral-900);
+  }
+
+  .usage__desc {
+    font-size: 2rem;
+    font-weight: 500;
+    font-family: "Nunito Sans";
+    line-height: 1.5;
+    letter-spacing: -0.04rem;
+    color: var(--clr-neutral-600);
+    text-wrap: auto;
+  }
+
+  .usage__desc--time {
+    font-weight: 700;
+  }
+
+  .usage__image img {
+    border-radius: var(--radius-10);
+  }
 }
