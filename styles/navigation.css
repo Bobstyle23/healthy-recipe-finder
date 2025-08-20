@@ -84,6 +84,11 @@
 @media (max-width: 64em) {
   [aria-expanded="true"] + .navigation__list {
     display: block;
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
   }
 
   .navigation {
@@ -111,6 +116,11 @@
       inset 0 0 0 1px var(--clr-neutral-300),
       0 12px 22px -12px var(--clr-neutral-600);
     z-index: 10;
+    opacity: 0;
+    transition:
+      opacity 0.5s,
+      display 0.5s;
+    transition-behavior: allow-discrete;
   }
 
   .navigation__list li {
