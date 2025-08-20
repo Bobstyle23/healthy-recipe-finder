@@ -12,6 +12,7 @@
   gap: var(--spacing-32);
   text-align: center;
   overflow: hidden;
+  margin-block-start: var(--spacing-64);
 
   &::before {
     content: "";
@@ -29,6 +30,7 @@
     padding-block: var(--spacing-80);
     padding-inline: 0;
     gap: var(--spacing-40);
+    margin-block-start: var(--spacing-80);
 
     &::before {
       bottom: -5.6rem;
@@ -47,7 +49,6 @@
 
   @media (min-width: 64em) {
     padding-block: var(--spacing-96);
-
     &::before {
       width: 31.5rem;
       height: 39rem;
