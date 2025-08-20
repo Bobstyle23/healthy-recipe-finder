@@ -5,6 +5,16 @@ const navigationMenu = document.querySelectorAll(".navigation__list li");
 
 const menuItems = [...navigationMenu].slice(0, 3);
 
+const resizeObserver = new ResizeObserver(() => {
+  document.body.classList.add("resizing");
+
+  requestAnimationFrame(() => {
+    document.body.classList.remove("resizing");
+  });
+});
+
+resizeObserver.observe(document.body);
+
 menuItems.forEach((menu, index) => {
   menu.addEventListener("click", function (event) {
     event.preventDefault();
