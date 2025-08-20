@@ -1,32 +1,36 @@
-import { loadComponent } from "./utilities";
+const toggleNavigation = document.querySelector(
+  "[aria-controls='primary-navigation']",
+);
+const navigationMenu = document.querySelectorAll(".navigation__list li");
 
-loadComponent("navigation", "../html/navigation.html").then(() => {
-  const toggleNavigation = document.querySelector(
-    "[aria-controls='primary-navigation']",
-  );
-  const navigationMenu = document.querySelectorAll(".navigation__list li");
+const menuItems = [...navigationMenu].slice(0, 3);
 
-  const menuItems = [...navigationMenu].slice(0, 3);
-
-  menuItems.forEach((menu) => {
-    menu.addEventListener("click", function () {
-      const isActive = this.hasAttribute("data-active");
-      if (isActive) return;
-
-      menuItems.forEach((element) => element.removeAttribute("data-active"));
-      menu.setAttribute("data-active", "true");
-    });
-  });
-
-  toggleNavigation.addEventListener("click", () => {
-    const navigationOpened = toggleNavigation.getAttribute("aria-expanded");
-    if (navigationOpened === "false") {
-      toggleNavigation.setAttribute("aria-expanded", "true");
-    } else {
-      toggleNavigation.setAttribute("aria-expanded", "false");
-    }
+menuItems.forEach((menu, index) => {
+  menu.addEventListener("click", function (event) {
+    event.preventDefault();
+    const targetUrl = event.target.href;
+    setTimeout(() => {
+      window.location.href = targetUrl;
+    }, 100);
+    localStorage.setItem("activeMenu", index);
   });
 });
 
-loadComponent("cta", "../html/cta.html");
-loadComponent("footer", "../html/footer.html");
+const savedIndex = localStorage.getItem("activeMenu");
+if (savedIndex !== null) {
+  menuItems.forEach((el) => el.removeAttribute("data-active"));
+  menuItems[savedIndex].setAttribute("data-active", "true");
+}
+if (window.location.href.includes("index") && savedIndex !== 0) {
+  menuItems.forEach((el) => el.removeAttribute("data-active"));
+  menuItems[0].setAttribute("data-active", "true");
+}
+
+toggleNavigation.addEventListener("click", () => {
+  const navigationOpened = toggleNavigation.getAttribute("aria-expanded");
+  if (navigationOpened === "false") {
+    toggleNavigation.setAttribute("aria-expanded", "true");
+  } else {
+    toggleNavigation.setAttribute("aria-expanded", "false");
+  }
+});
