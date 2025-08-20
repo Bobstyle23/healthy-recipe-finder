@@ -62,6 +62,7 @@
   svg {
     display: block;
     max-width: 100%;
+    width: 100%;
   }
 
   input,
@@ -172,6 +173,16 @@
         border-radius: var(--radius-6);
       }
     }
+
+    @media (min-width: 48em) {
+      font-size: 6.4rem;
+
+      span {
+        &::after {
+          bottom: 2rem;
+        }
+      }
+    }
   }
 
   .main__desc {
@@ -187,5 +198,9 @@
   .main__image img {
     border-radius: var(--radius-10);
     box-shadow: 0 0 0 3.45px var(--clr-white);
+
+    @media (min-width: 48em) {
+      box-shadow: 0 0 0 7.09px var(--clr-white);
+    }
   }
 }
