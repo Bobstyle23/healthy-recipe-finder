@@ -350,6 +350,11 @@
     grid-template-columns: 1fr;
     row-gap: var(--spacing-32);
     padding-block-start: var(--spacing-64);
+
+    @media (min-width: 48em) {
+      padding-block-start: var(--spacing-80);
+      row-gap: var(--spacing-40);
+    }
   }
 
   .usage__text {
@@ -364,6 +369,10 @@
     line-height: 1.2;
     letter-spacing: -0.2rem;
     color: var(--clr-neutral-900);
+
+    @media (min-width: 48em) {
+      font-size: 4.8rem;
+    }
   }
 
   .usage__desc {
@@ -378,6 +387,22 @@
 
   .usage__desc--time {
     font-weight: 700;
+    position: relative;
+    display: inline-block;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0.65rem;
+      left: 0;
+      background-color: var(--clr-orange);
+      opacity: 0.8;
+      width: 100%;
+      height: 1rem;
+      border-radius: 3px;
+      z-index: -1;
+    }
   }
 
   .usage__image img {
