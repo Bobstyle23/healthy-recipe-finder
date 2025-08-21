@@ -434,6 +434,12 @@
     display: grid;
     grid-template-columns: 1fr;
     row-gap: var(--spacing-40);
+
+    @media (min-width: 48em) {
+      padding-block-start: var(--spacing-64);
+      padding-block-end: var(--spacing-80);
+      row-gap: var(--spacing-64);
+    }
   }
 
   .mission__header {
@@ -469,6 +475,10 @@
     line-height: 1.2;
     letter-spacing: -0.2rem;
     color: var(--clr-neutral-900);
+
+    @media (min-width: 48em) {
+      font-size: 4.8rem;
+    }
   }
 
   .mission__text p {
