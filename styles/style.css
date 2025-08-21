@@ -427,4 +427,61 @@
       border-radius: var(--radius-16);
     }
   }
+
+  .mission {
+    padding-block-start: var(--spacing-48);
+    padding-block-end: var(--spacing-64);
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: var(--spacing-40);
+  }
+
+  .mission__header {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: var(--spacing-24);
+  }
+
+  .mission__text {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: var(--spacing-16);
+  }
+
+  .mission__label {
+    padding-inline: var(--spacing-6);
+    padding-block: var(--spacing-2);
+    background-color: var(--clr-orange);
+    width: fit-content;
+    border-radius: var(--radius-6);
+    font-size: 2rem;
+    font-family: Nunito;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.05rem;
+    color: var(--clr-neutral-900);
+  }
+
+  .mission__title {
+    font-size: 4rem;
+    font-family: Nunito;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.2rem;
+    color: var(--clr-neutral-900);
+  }
+
+  .mission__text p {
+    font-size: 2rem;
+    font-family: "Nunito Sans";
+    font-weight: 500;
+    color: var(--clr-neutral-600);
+    line-height: 1.5;
+    letter-spacing: -0.04rem;
+    text-wrap: auto;
+  }
+
+  .mission__image img {
+    border-radius: var(--radius-10);
+  }
 }
