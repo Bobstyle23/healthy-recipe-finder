@@ -507,4 +507,59 @@
   .mission__image img {
     border-radius: var(--radius-10);
   }
+
+  .purpose {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: var(--spacing-40);
+    padding-block: var(--spacing-48);
+  }
+
+  .purpose__title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: -0.2rem;
+    color: var(--clr-neutral-900);
+  }
+
+  .purpose__list {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: var(--spacing-24);
+  }
+
+  .purpose__list-box {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--spacing-20);
+  }
+
+  .purpose__list-icon {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  .purpose__list-text {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: var(--spacing-12);
+  }
+
+  .purpose__list-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.1rem;
+    color: var(--clr-neutral-900);
+  }
+
+  .purpose__list-desc {
+    font-size: 2rem;
+    font-weight: 500;
+    font-family: "Nunito sans";
+    line-height: 1.5;
+    letter-spacing: -0.04rem;
+    color: var(--clr-neutral-600);
+  }
 }
