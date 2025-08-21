@@ -63,6 +63,10 @@
       right: -7rem;
     }
   }
+
+  @media (min-width: 75em) {
+    margin-block-start: var(--spacing-96);
+  }
 }
 
 .cta__text {
