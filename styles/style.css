@@ -513,6 +513,13 @@
     grid-template-columns: 1fr;
     row-gap: var(--spacing-40);
     padding-block: var(--spacing-48);
+    position: relative;
+
+    border-top: 1px solid var(--clr-neutral-300);
+    border-bottom: 1px solid var(--clr-neutral-300);
+    @media (min-width: 48em) {
+      padding-block: var(--spacing-80);
+    }
   }
 
   .purpose__title {
@@ -521,12 +528,20 @@
     line-height: 1.4;
     letter-spacing: -0.2rem;
     color: var(--clr-neutral-900);
+
+    @media (min-width: 48em) {
+      font-size: 4.8rem;
+    }
   }
 
   .purpose__list {
     display: flex;
     flex-flow: column nowrap;
     gap: var(--spacing-24);
+
+    @media (min-width: 48em) {
+      gap: var(--spacing-32);
+    }
   }
 
   .purpose__list-box {
