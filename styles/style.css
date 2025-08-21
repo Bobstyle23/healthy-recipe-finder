@@ -733,4 +733,48 @@
       max-width: 72rem;
     }
   }
+
+  .recipes__filters {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: var(--spacing-12);
+  }
+
+  .recipes__select {
+    width: 100%;
+    box-shadow: inset 0 0 0 1px var(--clr-neutral-300);
+    border-radius: var(--radius-10);
+    background-color: var(--clr-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: var(--spacing-10);
+  }
+
+  .recipes__select p {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.03rem;
+    color: var(--clr-neutral-900);
+    margin-inline-end: var(--spacing-8);
+  }
+
+  .recipes__search {
+    width: 100%;
+    border: none;
+    padding-block: var(--spacing-10);
+    padding-inline-start: var(--spacing-16);
+    box-shadow: inset 0 0 0 1px var(--clr-neutral-300);
+    border-radius: var(--radius-10);
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.03rem;
+
+    &::placeholder {
+      color: var(--clr-neutral-900);
+      opacity: 0.7;
+    }
+  }
 }

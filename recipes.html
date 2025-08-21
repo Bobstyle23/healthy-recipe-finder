@@ -88,9 +88,55 @@
       </header>
       <main class="recipes__main">
         <section class="recipes__filters">
-          <select></select>
-          <select></select>
-          <form></form>
+          <div
+            class="recipes__select recipes__select--prep"
+            aria-expanded="false"
+            aria-label="Select maximum preparation time"
+          >
+            <p>Max Prep Time</p>
+            <img
+              style="width: 2rem; height: 2rem"
+              src="./assets/images/icon-chevron-down.svg"
+              alt=""
+            />
+          </div>
+          <div
+            class="recipes__select recipes__select--cook"
+            aria-expanded="false"
+            aria-label="Select maximum cooking time"
+          >
+            <p>Max Cook Time</p>
+            <img
+              style="width: 2rem; height: 2rem"
+              src="./assets/images/icon-chevron-down.svg"
+              alt=""
+            />
+          </div>
+          <!-- <select name="prep-time" id="prep-time"> -->
+          <!--   <option value="">Max Prep Time</option> -->
+          <!--   <option value="0">0 minutes</option> -->
+          <!--   <option value="5">5 minutes</option> -->
+          <!--   <option value="10">10 minutes</option> -->
+          <!--   <option value="clear">Clear</option> -->
+          <!-- </select> -->
+          <!-- <select name="cook-time" id="cook-time"> -->
+          <!--   <option value="">Max Cook Time</option> -->
+          <!--   <option value="0">0 minutes</option> -->
+          <!--   <option value="5">5 minutes</option> -->
+          <!--   <option value="10">10 minutes</option> -->
+          <!--   <option value="15">15 minutes</option> -->
+          <!--   <option value="20">20 minutes</option> -->
+          <!--   <option value="clear">Clear</option> -->
+          <!-- </select> -->
+          <form>
+            <input
+              type="text"
+              name="search"
+              class="recipes__search"
+              value=""
+              placeholder="Search by name or ingredient..."
+            />
+          </form>
         </section>
         <section class="recipes__container">
           <article class="recipe"></article>
