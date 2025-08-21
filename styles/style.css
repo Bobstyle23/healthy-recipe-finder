@@ -686,4 +686,51 @@
   .conclusion__image img {
     border-radius: var(--radius-10);
   }
+
+  .recipes__header {
+    padding-block: var(--spacing-48);
+    display: flex;
+    flex-flow: column nowrap;
+    gap: var(--spacing-12);
+
+    @media (min-width: 48em) {
+      padding-block-start: var(--spacing-64);
+    }
+
+    @media (min-width: 64em) {
+      align-items: center;
+      text-align: center;
+    }
+
+    @media (min-width: 75em) {
+      padding-block-start: var(--spacing-80);
+      padding-block-end: var(--spacing-64);
+    }
+  }
+
+  .recipes__title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.2rem;
+    color: var(--clr-neutral-900);
+    text-wrap: auto;
+
+    @media (min-width: 48em) {
+      font-size: 4.8rem;
+    }
+  }
+
+  .recipes__desc {
+    font-size: 2rem;
+    font-weight: 500;
+    font-family: "Nunito Sans";
+    line-height: 1.5;
+    letter-spacing: -0.04rem;
+    color: var(--clr-neutral-600);
+
+    @media (min-width: 64em) {
+      max-width: 72rem;
+    }
+  }
 }
