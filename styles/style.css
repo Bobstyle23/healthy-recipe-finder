@@ -508,13 +508,12 @@
     border-radius: var(--radius-10);
   }
 
-  .purpose {
+  .purpose,
+  .philosophy {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: var(--spacing-40);
     padding-block: var(--spacing-48);
-    border-top: 1px solid var(--clr-neutral-300);
-    border-bottom: 1px solid var(--clr-neutral-300);
 
     @media (min-width: 48em) {
       padding-block: var(--spacing-80);
@@ -527,7 +526,17 @@
     }
   }
 
-  .purpose__title {
+  .purpose {
+    border-top: 1px solid var(--clr-neutral-300);
+    border-bottom: 1px solid var(--clr-neutral-300);
+  }
+
+  .philosophy {
+    border-bottom: 1px solid var(--clr-neutral-300);
+  }
+
+  .purpose__title,
+  .philosophy__title {
     font-size: 4rem;
     font-weight: 800;
     line-height: 1.4;
@@ -539,7 +548,14 @@
     }
   }
 
-  .purpose__list {
+  .philosophy__title {
+    @media (min-width: 75em) {
+      max-width: 37rem;
+    }
+  }
+
+  .purpose__list,
+  .philosophy__list {
     display: flex;
     flex-flow: column nowrap;
     gap: var(--spacing-24);
@@ -555,24 +571,28 @@
     }
   }
 
-  .purpose__list-box {
+  .purpose__list-box,
+  .philosophy__list-box {
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: var(--spacing-20);
   }
 
-  .purpose__list-icon {
+  .purpose__list-icon,
+  .philosophy__list-icon {
     width: 3.2rem;
     height: 3.2rem;
   }
 
-  .purpose__list-text {
+  .purpose__list-text,
+  .philosophy__list-text {
     display: flex;
     flex-flow: column nowrap;
     gap: var(--spacing-12);
   }
 
-  .purpose__list-title {
+  .purpose__list-title,
+  .philosophy__list-title {
     font-size: 2.4rem;
     font-weight: 700;
     line-height: 1.3;
@@ -580,7 +600,8 @@
     color: var(--clr-neutral-900);
   }
 
-  .purpose__list-desc {
+  .purpose__list-desc,
+  .philosophy__list-desc {
     font-size: 2rem;
     font-weight: 500;
     font-family: "Nunito sans";
