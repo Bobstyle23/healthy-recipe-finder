@@ -440,12 +440,24 @@
       padding-block-end: var(--spacing-80);
       row-gap: var(--spacing-64);
     }
+
+    @media (min-width: 75em) {
+      padding-block-start: var(--spacing-80);
+      padding-block-end: var(--spacing-96);
+      grid-template-columns: auto 1fr;
+      column-gap: var(--spacing-64);
+      align-items: center;
+    }
   }
 
   .mission__header {
     display: flex;
     flex-flow: column nowrap;
     gap: var(--spacing-24);
+
+    @media (min-width: 75em) {
+      max-width: 51rem;
+    }
   }
 
   .mission__text {
@@ -475,6 +487,7 @@
     line-height: 1.2;
     letter-spacing: -0.2rem;
     color: var(--clr-neutral-900);
+    text-wrap: auto;
 
     @media (min-width: 48em) {
       font-size: 4.8rem;
