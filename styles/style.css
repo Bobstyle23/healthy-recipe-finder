@@ -513,12 +513,17 @@
     grid-template-columns: 1fr;
     row-gap: var(--spacing-40);
     padding-block: var(--spacing-48);
-    position: relative;
-
     border-top: 1px solid var(--clr-neutral-300);
     border-bottom: 1px solid var(--clr-neutral-300);
+
     @media (min-width: 48em) {
       padding-block: var(--spacing-80);
+    }
+
+    @media (min-width: 75em) {
+      padding-block: var(--spacing-96);
+      grid-template-columns: auto 1fr;
+      column-gap: var(--spacing-64);
     }
   }
 
@@ -541,6 +546,12 @@
 
     @media (min-width: 48em) {
       gap: var(--spacing-32);
+    }
+
+    @media (min-width: 75em) {
+      max-width: 75rem;
+      justify-self: end;
+      gap: var(--spacing-48);
     }
   }
 
