@@ -1,4 +1,4 @@
-import data from "../data.json";
+import data from "../data.json" with { type: "json" };
 
 const recipesSelectOptions = document.querySelectorAll(".recipes__select");
 const toggleNavigation = document.querySelector(
