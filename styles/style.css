@@ -735,9 +735,18 @@
   }
 
   .recipes__filters {
-    display: flex;
-    flex-flow: column nowrap;
-    gap: var(--spacing-12);
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: var(--spacing-12);
+
+    @media (min-width: 48em) {
+      grid-template-columns: repeat(2, 18rem) 1fr;
+      column-gap: var(--spacing-12);
+    }
+
+    @media (min-width: 64em) {
+      column-gap: var(--spacing-16);
+    }
   }
 
   .recipes__select {
@@ -778,6 +787,11 @@
   .recipes__search-box {
     position: relative;
     width: 100%;
+
+    @media (min-width: 64em) {
+      max-width: 31rem;
+      justify-self: end;
+    }
   }
 
   .recipes__search-icon {
