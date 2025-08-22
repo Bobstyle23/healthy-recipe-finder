@@ -86,16 +86,16 @@ const recipeDetail = data.map((recipe) => {
       </div>
       <div class="recipe__preparation">
         <div>
-         <img src="../assets/images/icon-servings.svg" />
+         <img src="./assets/images/icon-servings.svg" />
          <p>Servings: ${recipe.servings}</p>
        </div>
 
        <div>
-         <img src="../assets/images/icon-prep-time.svg" />
+         <img src="./assets/images/icon-prep-time.svg" />
          <p>Prep: ${recipe.prepMinutes}  ${recipe.prepMinutes > 1 ? "mins" : "min"}</p>
        </div>
       <div>
-         <img src="../assets/images/icon-cook-time.svg" />
+         <img src="./assets/images/icon-cook-time.svg" />
          <p>Cook: ${recipe.cookMinutes} ${recipe.cookMinutes > 1 ? "mins" : "min"} </p>
        </div>
        </div>
