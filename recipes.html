@@ -92,6 +92,7 @@
             class="recipes__select recipes__select--prep"
             aria-expanded="false"
             aria-label="Select maximum preparation time"
+            role="select-box"
           >
             <p>Max Prep Time</p>
             <img
@@ -99,11 +100,30 @@
               src="./assets/images/icon-chevron-down.svg"
               alt=""
             />
+
+            <div class="recipes__select-options" id="prep-time">
+              <div>
+                <input type="radio" name="prep-time" id="0" value="0" />
+                <label for="0">0 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="prep-time" id="5" value="5" />
+                <label for="5">5 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="prep-time" id="10" value="10" />
+                <label for="10">10 minutes</label>
+              </div>
+              <button type="button" class="recipes__select-btn prep-time-btn">
+                Clear
+              </button>
+            </div>
           </div>
           <div
             class="recipes__select recipes__select--cook"
             aria-expanded="false"
             aria-label="Select maximum cooking time"
+            role="select-box"
           >
             <p>Max Cook Time</p>
             <img
@@ -111,23 +131,33 @@
               src="./assets/images/icon-chevron-down.svg"
               alt=""
             />
+            <div class="recipes__select-options" id="cook-time">
+              <div>
+                <input type="radio" name="cook-time" id="0-cook" value="0" />
+                <label for="0-cook">0 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="cook-time" id="5-cook" value="5" />
+                <label for="5-cook">5 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="cook-time" id="10-cook" value="10" />
+                <label for="10-cook">10 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="cook-time" id="15-cook" value="10" />
+                <label for="15-cook">15 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="cook-time" id="20-cook" value="10" />
+                <label for="20-cook">20 minutes</label>
+              </div>
+
+              <button type="button" class="recipes__select-btn cook-time-btn">
+                Clear
+              </button>
+            </div>
           </div>
-          <!-- <select name="prep-time" id="prep-time"> -->
-          <!--   <option value="">Max Prep Time</option> -->
-          <!--   <option value="0">0 minutes</option> -->
-          <!--   <option value="5">5 minutes</option> -->
-          <!--   <option value="10">10 minutes</option> -->
-          <!--   <option value="clear">Clear</option> -->
-          <!-- </select> -->
-          <!-- <select name="cook-time" id="cook-time"> -->
-          <!--   <option value="">Max Cook Time</option> -->
-          <!--   <option value="0">0 minutes</option> -->
-          <!--   <option value="5">5 minutes</option> -->
-          <!--   <option value="10">10 minutes</option> -->
-          <!--   <option value="15">15 minutes</option> -->
-          <!--   <option value="20">20 minutes</option> -->
-          <!--   <option value="clear">Clear</option> -->
-          <!-- </select> -->
           <form class="recipes__search-box">
             <img
               src="./assets/images/icon-search.svg"
@@ -211,6 +241,6 @@
         <p class="footer__text">Made with ❤️ and 🥑</p>
       </footer>
     </div>
-    <script src="./js/index.js"></script>
+    <script type="module" src="./js/index.js"></script>
   </body>
 </html>

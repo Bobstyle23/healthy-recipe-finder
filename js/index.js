@@ -1,3 +1,18 @@
+import data from "../data.json";
+
+const recipesSelectOptions = document.querySelectorAll(".recipes__select");
+
+[...recipesSelectOptions].forEach((select) => {
+  select.addEventListener("click", (e) => {
+    const selectOpened = select.getAttribute("aria-expanded");
+    if (selectOpened === "false") {
+      select.setAttribute("aria-expanded", "true");
+    } else {
+      select.setAttribute("aria-expanded", "false");
+    }
+  });
+});
+
 const toggleNavigation = document.querySelector(
   "[aria-controls='primary-navigation']",
 );
