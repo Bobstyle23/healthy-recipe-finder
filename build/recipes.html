@@ -1,4 +1,13 @@
-<header class="header">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Healthy Recipe Finder | Recipes</title>
+    <link href="./css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="header">
   <div class="container">
     <nav id="primary-navigation" class="navigation">
       <a href="./index.html" class="navigation__logo">
@@ -62,3 +71,129 @@
   </div>
 </header>
 <script src="./js/navigation.bundle.js"></script>
+
+    <div class="recipes container">
+      <header class="recipes__header">
+        <h2 class="recipes__title">Explore our simple, healthy recipes</h2>
+        <p class="recipes__desc">
+          Discover eight quick, whole-food dishes that fit real-life schedules
+          and taste amazing. Use the search bar to&#160;find a&#160;recipe by&#160;name or
+          ingredient, or&#160;simply scroll the list and let something delicious
+          catch your eye.
+        </p>
+      </header>
+
+      <main class="recipes__main">
+        <section class="recipes__filters">
+          <div
+            class="recipes__select recipes__select--prep"
+            aria-expanded="false"
+            aria-label="Select maximum preparation time"
+            role="select-box"
+          >
+            <p>Max Prep Time</p>
+            <svg class="recipes__select-icon">
+              <use
+                href="./img/svgsprite/sprite.symbol.svg#icon-chevron-down"
+              ></use>
+            </svg>
+
+            <div class="recipes__select-options" id="prep-time">
+              <div>
+                <input type="radio" name="prep-time" id="0" value="0" />
+                <label for="0">0 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="prep-time" id="5" value="5" />
+                <label for="5">5 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="prep-time" id="10" value="10" />
+                <label for="10">10 minutes</label>
+              </div>
+              <button type="button" class="recipes__select-btn prep-time-btn">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div
+            class="recipes__select recipes__select--cook"
+            aria-expanded="false"
+            aria-label="Select maximum cooking time"
+            role="select-box"
+          >
+            <p>Max Cook Time</p>
+            <svg class="recipes__select-icon">
+              <use
+                href="./img/svgsprite/sprite.symbol.svg#icon-chevron-down"
+              ></use>
+            </svg>
+            <div class="recipes__select-options" id="cook-time">
+              <div>
+                <input type="radio" name="cook-time" id="0-cook" value="0" />
+                <label for="0-cook">0 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="cook-time" id="5-cook" value="5" />
+                <label for="5-cook">5 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="cook-time" id="10-cook" value="10" />
+                <label for="10-cook">10 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="cook-time" id="15-cook" value="10" />
+                <label for="15-cook">15 minutes</label>
+              </div>
+              <div>
+                <input type="radio" name="cook-time" id="20-cook" value="10" />
+                <label for="20-cook">20 minutes</label>
+              </div>
+
+              <button type="button" class="recipes__select-btn cook-time-btn">
+                Clear
+              </button>
+            </div>
+          </div>
+          <form class="recipes__search-box">
+            <svg class="recipes__search-icon">
+              <use href="./img/svgsprite/sprite.symbol.svg#icon-search"></use>
+            </svg>
+
+            <input
+              type="text"
+              name="search"
+              class="recipes__search"
+              value=""
+              placeholder="Search by name or ingredient..."
+            />
+          </form>
+        </section>
+        <section class="recipes__container"></section>
+      </main>
+    </div>
+    <footer class="footer container">
+  <section class="footer__icons">
+    <a href="#">
+      <svg class="footer__icon">
+        <use href="./img/svgsprite/sprite.symbol.svg#icon-instagram"></use>
+      </svg>
+    </a>
+    <a href="#">
+      <svg class="footer__icon">
+        <use href="./img/svgsprite/sprite.symbol.svg#icon-bluesky"></use>
+      </svg>
+    </a>
+
+    <a href="#">
+      <svg class="footer__icon">
+        <use href="./img/svgsprite/sprite.symbol.svg#icon-tiktok"></use>
+      </svg>
+    </a>
+  </section>
+  <p class="footer__text">Made with ❤️ and 🥑</p>
+</footer>
+
+    <script type="module" src="./js/recipes.bundle.js"></script>
+  </body>
+</html>

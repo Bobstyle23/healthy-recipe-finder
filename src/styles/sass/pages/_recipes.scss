@@ -1,0 +1,286 @@
+.recipes {
+  &__header {
+    @extend %flexbox;
+    gap: $spacing-12;
+    padding-block: $spacing-48;
+
+    @include respond-to($breakpoint-tablets) {
+      padding-block-start: $spacing-64;
+    }
+
+    @include respond-to($breakpoint-large-tablets) {
+      align-items: center;
+      text-align: center;
+    }
+
+    @include respond-to($breakpoint-desktops) {
+      padding-block-start: $spacing-80;
+      padding-block-end: $spacing-64;
+    }
+  }
+
+  &__title {
+    @extend %text-preset-2-mob;
+    color: $clr-neutral-900;
+    text-wrap: auto;
+
+    @include respond-to($breakpoint-tablets) {
+      font-size: 4.8rem;
+    }
+  }
+
+  &__desc {
+    @extend %text-preset-6;
+    color: $clr-neutral-600;
+    font-family: "NunitoSans";
+
+    @include respond-to($breakpoint-large-tablets) {
+      max-width: 72rem;
+    }
+  }
+
+  &__main {
+    @extend %flexbox;
+    gap: $spacing-24;
+
+    @include respond-to($breakpoint-desktops) {
+      padding-block-end: $spacing-96;
+    }
+  }
+
+  &__filters {
+    @extend %grid;
+    row-gap: $spacing-12;
+
+    @include respond-to($breakpoint-tablets) {
+      grid-template-columns: repeat(2, 18rem) 1fr;
+      column-gap: $spacing-12;
+    }
+
+    @include respond-to($breakpoint-large-tablets) {
+      column-gap: $spacing-16;
+    }
+  }
+
+  &__select {
+    width: 100%;
+    box-shadow: inset 0 0 0 1px $clr-neutral-300;
+    border-radius: $radius-10;
+    background-color: $clr-white;
+    @extend %flexbox;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    padding-block: $spacing-10;
+    transition: all 0.2s ease;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: inset 0 0 0 1px $clr-neutral-900;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+      box-shadow:
+        inset 0 0 0 1px $clr-neutral-300,
+        0 0 0 2px $clr-white,
+        0 0 0 4px $clr-neutral-900;
+    }
+  }
+
+  &__select-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &__select-options {
+    position: absolute;
+    background-color: $clr-white;
+    width: 100%;
+    padding: $spacing-8;
+    box-shadow: inset 0 0 0 1px $clr-neutral-300;
+    border-radius: $radius-8;
+    height: auto;
+    top: 5.5rem;
+    z-index: 1;
+    display: none;
+    opacity: 0;
+    transition:
+      display 0.5s,
+      opacity 0.5s;
+    transition-behavior: allow-discrete;
+
+    div {
+      padding: $spacing-8;
+    }
+
+    label {
+      @extend %text-preset-7;
+      color: $clr-neutral-900;
+      margin-inline-start: $spacing-8;
+    }
+  }
+
+  &__select > p {
+    @extend %text-preset-7;
+    color: $clr-neutral-900;
+    margin-inline-end: $spacing-8;
+  }
+
+  &__select-btn {
+    @extend %text-preset-9;
+    font-family: "NunitoSans";
+    background-color: transparent;
+    color: var(--clr-neutral-900);
+  }
+
+  &__search-box {
+    position: relative;
+    width: 100%;
+
+    @include respond-to($breakpoint-large-tablets) {
+      max-width: 31rem;
+      justify-self: end;
+    }
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: 1.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &__search {
+    width: 100%;
+    border: none;
+    padding-block: $spacing-10;
+    padding-inline-start: calc($spacing-16 + 2.8rem);
+    box-shadow: inset 0 0 0 1px $clr-neutral-300;
+    border-radius: $radius-10;
+    @extend %text-preset-7;
+    outline: none;
+    transition: all 0.2s ease;
+    color: $clr-neutral-900;
+
+    &::placeholder {
+      color: $clr-neutral-900;
+      opacity: 0.7;
+    }
+
+    &:hover {
+      box-shadow: inset 0 0 0 1px $clr-neutral-900;
+      cursor: pointer;
+    }
+
+    &:focus,
+    &:focus-visible {
+      box-shadow:
+        inset 0 0 0 1px $clr-neutral-300,
+        0 0 0 2px $clr-white,
+        0 0 0 4px $clr-neutral-900;
+    }
+  }
+
+  &__container {
+    @extend %grid;
+    row-gap: $spacing-32;
+
+    @include respond-to($breakpoint-large-tablets) {
+      grid-template-columns: repeat(auto-fill, minmax(min(37.6rem, 100%), 1fr));
+      gap: $spacing-32;
+    }
+  }
+}
+
+[aria-expanded="true"] > .recipes__select-options {
+  display: block;
+  opacity: 1;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+.recipe {
+  @extend %flexbox;
+  gap: $spacing-16;
+  padding: $spacing-8;
+  background-color: $clr-white;
+  border-radius: $radius-10;
+  box-shadow:
+    inset 0 0 0 1px $clr-neutral-300,
+    0 8px 16px -9px rgba(22, 58, 52, 0.16);
+  overflow: hidden;
+
+  @include respond-to($breakpoint-large-tablets) {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+  }
+
+  &__image img {
+    border-radius: $radius-10;
+    transition: all 0.4s ease;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+
+  &__info {
+    @extend %flexbox;
+    gap: $spacing-10;
+  }
+
+  &__title {
+    @extend %text-preset-5;
+    text-wrap: auto;
+    color: $clr-neutral-900;
+  }
+
+  &__desc {
+    @extend %text-preset-9;
+    font-family: "NunitoSans";
+    color: $clr-neutral-600;
+  }
+
+  &__preparation {
+    @extend %flexbox;
+    flex-flow: row wrap;
+    align-items: center;
+    column-gap: $spacing-16;
+    row-gap: $spacing-8;
+
+    div {
+      @extend %flexbox;
+      flex-flow: row nowrap;
+      align-items: center;
+      gap: $spacing-6;
+    }
+
+    img {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+
+    p {
+      @extend %text-preset-9;
+      font-family: "NunitoSans";
+      color: $clr-neutral-900;
+    }
+  }
+
+  &__link {
+    border-radius: $radius-full;
+    padding-block: $spacing-12;
+    @extend %text-preset-9;
+    font-family: "NunitoSans";
+  }
+}
