@@ -8,8 +8,6 @@
 
   &__intro {
     @extend %flexbox;
-    align-items: stretch;
-    justify-content: flex-start;
     gap: $spacing-40;
 
     @include respond-to($breakpoint-large-tablets) {
@@ -105,9 +103,6 @@
 
   &__options {
     @extend %flexbox;
-    flex-flow: column nowrap;
-    align-items: stretch;
-    justify-content: flex-start;
     gap: $spacing-32;
     padding-block-start: $spacing-64;
 
@@ -125,8 +120,6 @@
 
 .options {
   @extend %grid;
-  align-items: stretch;
-  justify-items: start;
   row-gap: $spacing-24;
 
   @include respond-to($breakpoint-tablets) {
@@ -192,9 +185,6 @@
 
   &__text {
     @extend %flexbox;
-    align-items: stretch;
-    justify-content: normal;
-    flex-flow: column nowrap;
     row-gap: $spacing-12;
   }
 
@@ -213,7 +203,6 @@
 
 .main__usage {
   @extend %grid;
-  justify-items: start;
   row-gap: $spacing-32;
   padding-block-start: $spacing-64;
 
@@ -236,8 +225,6 @@
 
 .usage__text {
   @extend %flexbox;
-  flex-flow: column nowrap;
-  align-items: stretch;
   gap: $spacing-20;
 
   @include respond-to($breakpoint-large-tablets) {

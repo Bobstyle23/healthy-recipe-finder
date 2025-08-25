@@ -9,6 +9,7 @@
   text-align: center;
   overflow: hidden;
   margin-block-start: $spacing-64;
+  justify-items: center;
 
   &::before,
   &::after {

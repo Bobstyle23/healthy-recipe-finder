@@ -1,12 +1,6 @@
-.mission__section {
-  border-bottom: 1px solid $clr-neutral-300;
-}
-
 .mission {
   @extend %grid;
   row-gap: $spacing-40;
-  justify-items: stretch;
-  align-items: stretch;
   padding-block-start: $spacing-48;
   padding-block-end: $spacing-64;
 
@@ -26,8 +20,6 @@
 
   &__header {
     @extend %flexbox;
-    flex-flow: column nowrap;
-    align-items: stretch;
     gap: $spacing-24;
 
     @include respond-to($breakpoint-desktops) {
@@ -37,9 +29,6 @@
 
   &__text {
     @extend %flexbox;
-    align-items: start;
-    justify-content: start;
-    flex-flow: column nowrap;
     gap: $spacing-16;
   }
 
@@ -75,5 +64,147 @@
     img {
       border-radius: $radius-10;
     }
+  }
+}
+
+.purpose,
+.philosophy {
+  @extend %grid;
+  row-gap: $spacing-40;
+  padding-block: $spacing-48;
+
+  @include respond-to($breakpoint-tablets) {
+    padding-block: $spacing-80;
+  }
+
+  @include respond-to($breakpoint-desktops) {
+    padding-block: $spacing-96;
+    grid-template-columns: auto 1fr;
+    column-gap: $spacing-64;
+  }
+
+  &__title {
+    @extend %text-preset-2-mob;
+    line-height: 1.4;
+    color: $clr-neutral-900;
+
+    @include respond-to($breakpoint-tablets) {
+      font-size: 4.8rem;
+    }
+  }
+
+  .philosophy__title {
+    @include respond-to($breakpoint-desktops) {
+      max-width: 37rem;
+    }
+  }
+
+  &__list {
+    @extend %flexbox;
+    gap: $spacing-24;
+
+    @include respond-to($breakpoint-tablets) {
+      gap: $spacing-32;
+    }
+
+    @include respond-to($breakpoint-desktops) {
+      max-width: 75rem;
+      justify-self: end;
+      gap: $spacing-48;
+    }
+  }
+
+  &__list-box {
+    @extend %grid;
+    grid-template-columns: auto 1fr;
+    column-gap: $spacing-20;
+  }
+
+  &__list-icon {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  &__list-text {
+    @extend %flexbox;
+    gap: $spacing-12;
+  }
+
+  &__list-title {
+    @extend %text-preset-4;
+    color: $clr-neutral-900;
+  }
+
+  &__list-desc {
+    @extend %text-preset-6;
+    font-family: "NunitoSans";
+    color: $clr-neutral-600;
+  }
+}
+
+.conclusion {
+  @extend %grid;
+  padding-block-start: $spacing-48;
+  row-gap: $spacing-32;
+
+  @include respond-to("(max-width: 47em)") {
+    margin-block-end: -1.2rem;
+  }
+
+  @include respond-to($breakpoint-tablets) {
+    padding-block-start: $spacing-80;
+    row-gap: $spacing-40;
+  }
+
+  @include respond-to($breakpoint-desktops) {
+    padding-block-start: $spacing-96;
+    grid-template-columns: 0.5fr 1fr;
+    column-gap: $spacing-64;
+    align-items: center;
+  }
+
+  &__text {
+    @extend %flexbox;
+    gap: $spacing-20;
+
+    @include respond-to($breakpoint-desktops) {
+      max-width: 37.6rem;
+    }
+  }
+
+  &__text div {
+    @extend %flexbox;
+    gap: $spacing-12;
+  }
+
+  &__title {
+    @extend %text-preset-2-mob;
+    color: $clr-neutral-900;
+    text-wrap: auto;
+
+    @include respond-to($breakpoint-tablets) {
+      font-size: 4.8rem;
+    }
+  }
+
+  &__desc {
+    @extend %text-preset-6;
+    color: $clr-neutral-600;
+    font-family: "NunitoSans";
+  }
+
+  &__list li {
+    @extend %text-preset-6;
+    color: $clr-neutral-600;
+    font-family: "NunitoSans";
+    margin-inline-start: 3rem;
+
+    &::marker {
+      color: currentColor;
+    }
+  }
+
+  &__image img {
+    border-radius: $radius-10;
   }
 }

@@ -1,5 +1,6 @@
 .footer {
   @extend %flexbox;
+  align-items: center;
   gap: $spacing-24;
   padding-block-start: $spacing-32;
   padding-block-end: $spacing-20;

@@ -8,7 +8,7 @@
   @extend %grid;
   grid-template-columns: auto 1fr auto;
   margin-block: $spacing-20;
-  justify-items: auto;
+  align-items: center;
 
   &__logo {
     width: 25rem;
