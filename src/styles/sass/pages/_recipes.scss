@@ -280,7 +280,13 @@
   &__link {
     border-radius: $radius-full;
     padding-block: $spacing-12;
-    @extend %text-preset-9;
+    @extend %text-preset-8;
     font-family: "NunitoSans";
+  }
+}
+
+.divider {
+  @include respond-to($breakpoint-desktops) {
+    display: block;
   }
 }
