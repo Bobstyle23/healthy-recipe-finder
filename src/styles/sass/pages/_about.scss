@@ -1,7 +1,12 @@
+.mission__section {
+  border-bottom: 1px solid $clr-neutral-300;
+}
+
 .mission {
   @extend %grid;
   row-gap: $spacing-40;
-  justify-items: start;
+  justify-items: stretch;
+  align-items: stretch;
   padding-block-start: $spacing-48;
   padding-block-end: $spacing-64;
 
@@ -11,7 +16,7 @@
     row-gap: $spacing-64;
   }
 
-  @include respond-to($breakpoint-large-tablets) {
+  @include respond-to($breakpoint-desktops) {
     padding-block-start: $spacing-80;
     padding-block-end: $spacing-96;
     grid-template-columns: auto 1fr;
@@ -23,15 +28,17 @@
     @extend %flexbox;
     flex-flow: column nowrap;
     align-items: stretch;
-    gap: $spacing-16;
+    gap: $spacing-24;
 
-    @include respond-to($breakpoint-large-tablets) {
+    @include respond-to($breakpoint-desktops) {
       max-width: 51rem;
     }
   }
 
   &__text {
     @extend %flexbox;
+    align-items: start;
+    justify-content: start;
     flex-flow: column nowrap;
     gap: $spacing-16;
   }

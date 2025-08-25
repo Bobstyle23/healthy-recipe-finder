@@ -8,39 +8,42 @@
   </head>
   <body>
     @@include("./navigation.html")
-    <div class="container">
-      <section class="mission">
-        <header class="mission__header">
-          <span class="mission__label">Our mission</span>
-          <h2 class="mission__title">
-            Help more people cook nourishing meals, more often.
-          </h2>
-          <div class="mission__text">
-            <p>
-              Healthy Recipe Finder was created to prove that healthy eating can
-              be convenient, affordable, and genuinely delicious.
-            </p>
-            <p>
-              We showcase quick, whole-food dishes that anyone can master—no
-              fancy equipment, no ultra-processed shortcuts—just honest
-              ingredients and straightforward steps.
-            </p>
-          </div>
-        </header>
-        <picture class="mission__image">
-          <source
-            srcset="./img/image-about-our-mission-large.webp"
-            type="image/webp"
-            media="(min-width: 48em)"
-          />
-          <img
-            loading="lazy"
-            src="./img/image-about-our-mission-small.webp"
-            alt="A Smiling woman slicing fresh carrots with knife in a cozy kitchen"
-          />
-        </picture>
-      </section>
-    </div>
+    <section class="mission__section">
+      <div class="container">
+        <section class="mission">
+          <header class="mission__header">
+            <span class="mission__label">Our mission</span>
+            <h2 class="mission__title">
+              Help more people cook nourishing meals, more often.
+            </h2>
+            <div class="mission__text">
+              <p>
+                Healthy Recipe Finder was created to prove that healthy eating
+                can be convenient, affordable, and genuinely delicious.
+              </p>
+              <p>
+                We showcase quick, whole-food dishes that anyone can master—no
+                fancy equipment, no ultra-processed shortcuts—just honest
+                ingredients and straightforward steps.
+              </p>
+            </div>
+          </header>
+          <picture class="mission__image">
+            <source
+              srcset="./img/image-about-our-mission-large.webp"
+              type="image/webp"
+              media="(min-width: 48em)"
+            />
+            <img
+              loading="lazy"
+              src="./img/image-about-our-mission-small.webp"
+              alt="A Smiling woman slicing fresh carrots with knife in a cozy kitchen"
+            />
+          </picture>
+        </section>
+      </div>
+    </section>
+
     @@include("./cta.html") @@include('./footer.html')
   </body>
 </html>
