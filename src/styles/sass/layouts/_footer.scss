@@ -1,0 +1,40 @@
+.footer {
+  @extend %flexbox;
+  gap: $spacing-24;
+  padding-block-start: $spacing-32;
+  padding-block-end: $spacing-20;
+
+  @include respond-to($breakpoint-tablets) {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding-block: $spacing-40;
+  }
+
+  &__icons {
+    @extend %flexbox;
+    flex-flow: row nowrap;
+    gap: $spacing-24;
+  }
+
+  &__icon {
+    width: 2.2rem;
+    height: 2.2rem;
+    fill: $clr-neutral-900;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+  }
+
+  &__text {
+    @extend %text-preset-9;
+    font-family: "NunitoSans";
+    color: $clr-neutral-900;
+
+    @include respond-to($breakpoint-tablets) {
+      order: -1;
+    }
+  }
+}

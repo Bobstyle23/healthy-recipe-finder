@@ -53,7 +53,7 @@ gulp.task("ttfToWoff", () => {
 });
 
 gulp.task("fontsStyle", (done) => {
-  let fontsFile = `${srcFolder}/styles/scss/fonts/_fonts.scss`;
+  let fontsFile = `${srcFolder}/styles/sass/base/_fonts.scss`;
   let fontsDir = `${destFolder}/fonts/`;
 
   fs.readdir(fontsDir, (err, fontsFiles) => {

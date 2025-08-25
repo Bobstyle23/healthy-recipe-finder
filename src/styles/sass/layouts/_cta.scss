@@ -1,0 +1,94 @@
+.cta {
+  @extend %grid;
+  background-color: $clr-neutral-200;
+  padding-block: $spacing-48;
+  padding-inline: $spacing-16;
+  border-radius: $radius-16;
+  position: relative;
+  gap: $spacing-32;
+  text-align: center;
+  overflow: hidden;
+  margin-block-start: $spacing-64;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+  }
+
+  &::before {
+    background: url(../img/svgicons/pattern-fork.svg) no-repeat top/cover;
+  }
+
+  &::after {
+    background: url(../img/svgicons/pattern-knife.svg) no-repeat top/cover;
+  }
+
+  @include respond-to($breakpoint-tablets) {
+    padding-block: $spacing-80;
+    padding-inline: 0;
+    gap: $spacing-40;
+    margin-block-start: $spacing-80;
+
+    &::before {
+      bottom: -5.6rem;
+      left: -4.8rem;
+      width: 18rem;
+      height: 23rem;
+    }
+
+    &::after {
+      width: 17.2rem;
+      height: 17.2rem;
+      top: -5rem;
+      right: -2.1rem;
+    }
+  }
+
+  @include respond-to($breakpoint-large-tablets) {
+    padding-block: $spacing-96;
+    &::before {
+      width: 31.5rem;
+      height: 39rem;
+      top: 2.4rem;
+      left: -7.3rem;
+    }
+
+    &::after {
+      width: 33.8rem;
+      height: 33.8rem;
+      top: 2.4rem;
+      right: -7rem;
+    }
+  }
+
+  @include respond-to($breakpoint-desktops) {
+    margin-block-start: $spacing-96;
+  }
+
+  &__text {
+    @extend %flexbox;
+    gap: $spacing-12;
+  }
+
+  &__title {
+    @extend %text-preset-2-mob;
+    color: $clr-neutral-900;
+    text-wrap: auto;
+    z-index: 1;
+
+    @include respond-to($breakpoint-tablets) {
+      font-size: 4.8rem;
+    }
+  }
+
+  &__desc {
+    @extend %text-preset-6;
+    font-family: "NunitoSans";
+    color: $clr-neutral-600;
+  }
+
+  &__link {
+    @include typography(1.8rem, 700, 1.4);
+  }
+}

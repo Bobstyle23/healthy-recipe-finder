@@ -1,0 +1,289 @@
+.main {
+  margin-block-start: $spacing-48;
+
+  @include respond-to($breakpoint-large-tablets) {
+    margin-block-start: $spacing-80;
+    margin-block-end: $spacing-96;
+  }
+
+  &__intro {
+    @extend %flexbox;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: $spacing-40;
+
+    @include respond-to($breakpoint-large-tablets) {
+      gap: $spacing-80;
+    }
+  }
+
+  &__header {
+    @extend %flexbox;
+    align-items: flex-start;
+    gap: $spacing-16;
+
+    @include respond-to($breakpoint-large-tablets) {
+      align-items: center;
+      max-width: 80.5rem;
+      margin-inline: auto;
+      text-align: center;
+      gap: $spacing-12;
+    }
+  }
+
+  &__title {
+    @extend %text-preset-1-mob;
+    text-wrap: auto;
+    color: $clr-neutral-900;
+
+    span {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2.5rem;
+        background-color: $clr-orange;
+        opacity: 0.5;
+        left: 0;
+        z-index: -1;
+        bottom: 1rem;
+        border-radius: $radius-6;
+      }
+    }
+
+    @include respond-to($breakpoint-tablets) {
+      font-size: 6.4rem;
+
+      span {
+        &::after {
+          bottom: 2rem;
+        }
+      }
+    }
+
+    @include respond-to($breakpoint-large-tablets) {
+      font-size: 7.2rem;
+
+      span {
+        &::after {
+          height: 3rem;
+        }
+      }
+    }
+  }
+
+  &__desc {
+    @extend %text-preset-6;
+    font-family: "NunitoSans";
+    color: $clr-neutral-600;
+    margin-block-end: $spacing-16;
+
+    @include respond-to($breakpoint-large-tablets) {
+      max-width: 58rem;
+      margin-block-end: 2.8rem;
+    }
+  }
+
+  &__link {
+    @extend %text-preset-5;
+  }
+
+  &__image img {
+    border-radius: $radius-10;
+    box-shadow: 0 0 0 3.45px $clr-white;
+
+    @include respond-to($breakpoint-tablets) {
+      box-shadow: 0 0 0 7.09px $clr-white;
+    }
+
+    @include respond-to($breakpoint-large-tablets) {
+      box-shadow: 0 0 0 12px $clr-white;
+    }
+  }
+
+  &__options {
+    @extend %flexbox;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: $spacing-32;
+    padding-block-start: $spacing-64;
+
+    @include respond-to($breakpoint-tablets) {
+      padding-block: $spacing-80;
+      gap: $spacing-48;
+      border-bottom: 1px solid $clr-neutral-300;
+    }
+
+    @include respond-to($breakpoint-large-tablets) {
+      padding-block: $spacing-96;
+    }
+  }
+}
+
+.options {
+  @extend %grid;
+  align-items: stretch;
+  justify-items: start;
+  row-gap: $spacing-24;
+
+  @include respond-to($breakpoint-tablets) {
+    row-gap: $spacing-32;
+  }
+
+  @include respond-to($breakpoint-large-tablets) {
+    grid-template-columns: repeat(auto-fit, minmax(min(34rem, 100%), 1fr));
+    column-gap: $spacing-32;
+  }
+
+  &__title {
+    @extend %text-preset-2-mob;
+    color: $clr-neutral-900;
+    font-family: "Nunito";
+
+    @include respond-to($breakpoint-tablets) {
+      font-size: 4.8rem;
+    }
+
+    @include respond-to("(min-width: 71.75em)") {
+      text-align: center;
+    }
+  }
+}
+
+.option {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  row-gap: $spacing-20;
+  max-width: 100%;
+
+  @include respond-to($breakpoint-tablets) {
+    row-gap: $spacing-24;
+  }
+
+  &__image {
+    width: 6rem;
+    height: 6rem;
+    background-color: $clr-white;
+    border-radius: $radius-12;
+    padding: 1rem;
+    box-shadow: inset 0 0 0 1px $clr-neutral-200;
+
+    svg {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    &--whole-food {
+      fill: $clr-orange;
+    }
+
+    &--min-fuss {
+      fill: $clr-teal;
+    }
+
+    &--search {
+      fill: $clr-indigo;
+    }
+  }
+
+  &__text {
+    @extend %flexbox;
+    align-items: stretch;
+    justify-content: normal;
+    flex-flow: column nowrap;
+    row-gap: $spacing-12;
+  }
+
+  &__title {
+    @extend %text-preset-3;
+    color: $clr-neutral-900;
+  }
+
+  &__desc {
+    @extend %text-preset-6;
+    font-family: "NunitoSans";
+    color: $clr-neutral-600;
+    text-wrap: auto;
+  }
+}
+
+.main__usage {
+  @extend %grid;
+  justify-items: start;
+  row-gap: $spacing-32;
+  padding-block-start: $spacing-64;
+
+  @include respond-to($breakpoint-tablets) {
+    padding-block-start: $spacing-80;
+    row-gap: $spacing-40;
+  }
+
+  @include respond-to($breakpoint-large-tablets) {
+    padding-block-start: $spacing-96;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: $spacing-48;
+    align-items: center;
+  }
+
+  @include respond-to($breakpoint-desktops) {
+    grid-template-columns: auto 1fr;
+  }
+}
+
+.usage__text {
+  @extend %flexbox;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  gap: $spacing-20;
+
+  @include respond-to($breakpoint-large-tablets) {
+    max-width: 50.9rem;
+  }
+}
+
+.usage__title {
+  @extend %text-preset-2-mob;
+  color: $clr-neutral-900;
+
+  @include respond-to($breakpoint-tablets) {
+    font-size: 4.8rem;
+  }
+}
+
+.usage__desc {
+  @extend %text-preset-6;
+  font-family: "NunitoSans";
+  text-wrap: auto;
+  color: $clr-neutral-600;
+}
+
+.usage__desc--time {
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0.65rem;
+    left: 0;
+    background-color: $clr-orange;
+    opacity: 0.8;
+    width: 100%;
+    height: 1rem;
+    border-radius: 3px;
+    z-index: -1;
+  }
+}
+
+.usage__image img {
+  border-radius: $radius-10;
+
+  @include respond-to($breakpoint-tablets) {
+    border-radius: $radius-16;
+  }
+}

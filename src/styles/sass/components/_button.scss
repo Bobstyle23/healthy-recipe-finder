@@ -1,0 +1,14 @@
+.button {
+  border: none;
+  background-color: $clr-neutral-900;
+  padding-block: $spacing-16;
+  padding-inline: $spacing-24;
+  border-radius: $radius-10;
+  text-align: center;
+  color: $clr-white;
+  transition: background-color 0.25s ease;
+
+  &:hover {
+    background-color: $clr-neutral-600;
+  }
+}

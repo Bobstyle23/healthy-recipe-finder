@@ -189,7 +189,7 @@ gulp.task("js:docs", () => {
     .pipe(changed("./docs/js"))
     .pipe(plumber(notificationConfig("JavaScript")))
     .pipe(babel())
-    .pipe(webpack(require("./../webpack.config.js")))
+    .pipe(webpack(require("../webpack.config.js")))
     .pipe(gulp.dest("./docs/js"));
 });
 

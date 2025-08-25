@@ -20,8 +20,8 @@ html {
 
 body {
   line-height: 1;
-  font-weight: 400;
-  @include containerWidth(144rem);
+  font-family: "Nunito", sans-serif;
+  background-color: $clr-neutral-100;
 }
 
 h1,
@@ -78,16 +78,6 @@ button {
   &:hover {
     cursor: pointer;
   }
-}
-
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
 }
 
 /* NOTE: use lvh, svh, or dvh instead vh */

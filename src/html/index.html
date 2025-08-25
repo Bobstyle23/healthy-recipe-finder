@@ -7,8 +7,120 @@
     <title>Main page</title>
   </head>
   <body>
-    <!-- @@include('./components/hero-section-bullets/hero.html') -->
-    <h1>Hello World</h1>
+    @@include('./navigation.html')
+    <div class="container">
+      <main class="main">
+        <section class="main__intro">
+          <header class="main__header">
+            <h1 class="main__title"><span>Healthy</span> meals, zero fuss</h1>
+            <p class="main__desc">
+              Discover eight quick, whole-food recipes that you can cook
+              tonight—no processed junk, no guesswork.
+            </p>
+            <a
+              href="./recipes.html"
+              aria-label="Start exploring recipes"
+              class="main__link button"
+              >Start exploring</a
+            >
+          </header>
+          <picture class="main__image">
+            <source
+              srcset="./img/image-home-hero-large.webp"
+              media="(min-width: 48em)"
+              type="image/webp"
+            />
+            <img
+              src="./img/image-home-hero-small.webp"
+              alt="Woman making a salad with sliced cucumbers and broccoli"
+            />
+          </picture>
+        </section>
+        <section class="main__options">
+          <h2 class="options__title">What you'll get</h2>
+          <div class="options">
+            <article class="option">
+              <div class="option__image">
+                <svg class="option__image--whole-food">
+                  <use
+                    href="./img/svgsprite/sprite.symbol.svg#icon-whole-food-recipes"
+                  ></use>
+                </svg>
+              </div>
+
+              <div class="option__text">
+                <h3 class="option__title">Whole-food recipes</h3>
+                <p class="option__desc">
+                  Each dish uses everyday, unprocessed ingredients.
+                </p>
+              </div>
+            </article>
+            <article class="option">
+              <div class="option__image">
+                <svg class="option__image--min-fuss">
+                  <use
+                    href="./img/svgsprite/sprite.symbol.svg#icon-minimum-fuss"
+                  ></use>
+                </svg>
+              </div>
+
+              <div class="option__text">
+                <h3 class="option__title">Minimum fuss</h3>
+                <p class="option__desc">
+                  All recipes are designed to make eating healthy quick and
+                  easy.
+                </p>
+              </div>
+            </article>
+            <article class="option">
+              <div class="option__image">
+                <svg class="option__image--search">
+                  <use
+                    href="./img/svgsprite/sprite.symbol.svg#icon-search-in-seconds"
+                  ></use>
+                </svg>
+              </div>
+
+              <div class="option__text">
+                <h3 class="option__title">Search in seconds</h3>
+                <p class="option__desc">
+                  Filter by name or ingredient and jump straight to the recipe
+                  you need.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="main__usage">
+          <article class="usage__text">
+            <h3 class="usage__title">Built for real life</h3>
+            <p class="usage__desc">
+              Cooking shouldn’t be complicated. These recipes come in under
+              <span class="usage__desc--time">30 minutes</span> of active time,
+              fit busy schedules, and taste good enough to repeat.
+            </p>
+            <p class="usage__desc">
+              Whether you’re new to the kitchen or just need fresh ideas, we’ve
+              got you covered.
+            </p>
+          </article>
+          <picture class="usage__image">
+            <source
+              srcset="./img/image-home-real-life-large.webp"
+              media="(min-width: 48em)"
+              type="image/webp"
+            />
+            <img
+              loading="lazy"
+              src="./img/image-home-real-life-small.webp"
+              alt="A man chopping spinach or kale with knife and the head of broccoli and cabbage on a plate at the side."
+            />
+          </picture>
+        </section>
+      </main>
+    </div>
+
+    @@include("./cta.html") @@include("./footer.html")
     <script src="./js/index.bundle.js"></script>
   </body>
 </html>

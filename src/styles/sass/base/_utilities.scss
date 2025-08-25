@@ -1,7 +1,31 @@
-.hidden {
+[hidden] {
   display: none;
 }
 
 .container {
-  @include containerWidth(111rem);
+  @include containerWidth(119.2rem);
+  margin-inline: $spacing-16;
+
+  @include respond-to($breakpoint-tablets) {
+    margin-inline: $spacing-32;
+  }
+
+  @include respond-to($breakpoint-desktops) {
+    margin-inline: auto;
+  }
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.resizing * {
+  transition: none !important;
+  animation: none !important;
 }

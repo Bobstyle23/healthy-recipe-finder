@@ -1,0 +1,154 @@
+.header {
+  border-bottom: 1px solid $clr-neutral-300;
+  max-width: 144rem;
+  margin-inline: auto;
+}
+
+.navigation {
+  @extend %grid;
+  grid-template-columns: auto 1fr auto;
+  margin-block: $spacing-20;
+  justify-items: auto;
+
+  &__logo {
+    width: 25rem;
+    height: 3.2rem;
+  }
+
+  &__menu {
+    width: 4rem;
+    height: 4rem;
+    padding: $spacing-12;
+    border-radius: $radius-4;
+    background-color: $clr-neutral-300;
+    display: none;
+  }
+
+  &__list {
+    @extend %flexbox;
+    flex-flow: row nowrap;
+    gap: $spacing-40;
+    justify-self: center;
+
+    li {
+      @extend %text-preset-7;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: $clr-orange;
+        border-radius: $radius-4;
+        margin-block-start: 0.5rem;
+        display: block;
+      }
+
+      &[data-active="true"]::after,
+      &:hover::after {
+        top: 2rem;
+        left: 0;
+        width: 100%;
+        height: 0.3rem;
+      }
+    }
+
+    a {
+      color: $clr-neutral-900;
+    }
+  }
+
+  &__list--link {
+    display: none;
+  }
+
+  &__link {
+    @extend %text-preset-5;
+    padding-inline: $spacing-16;
+    padding-block: $spacing-12;
+  }
+}
+
+@include respond-to($breakpoint-large-tablets) {
+  .navigation__logo {
+    width: 26rem;
+    height: 4rem;
+  }
+}
+
+@include respond-to("(max-width: 64em)") {
+  [aria-expanded="true"] + .navigation__list {
+    display: block;
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+
+    &__menu {
+      display: block;
+    }
+
+    &__list {
+      display: none;
+      flex-flow: column nowrap;
+      position: absolute;
+      top: 7.2rem;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background-color: $clr-white;
+      width: calc(100% - 6.4rem);
+      padding: $spacing-8;
+      gap: 0;
+      border-radius: $radius-8;
+      box-shadow:
+        inset 0 0 0 1px $clr-neutral-300,
+        0 12px 22px -12px $clr-neutral-600;
+      z-index: 10;
+      opacity: 0;
+      transition:
+        opacity 0.5s,
+        display 0.5s;
+      transition-behavior: allow-discrete;
+
+      li {
+        &::after {
+          content: none;
+        }
+        padding-inline: $spacing-8;
+        padding-block: $spacing-12;
+      }
+    }
+
+    &__link {
+      display: none;
+    }
+
+    &__list--link {
+      display: block;
+      background-color: $clr-neutral-900;
+      text-align: center;
+      width: 100%;
+      border-radius: $radius-10;
+
+      a {
+        color: $clr-white !important;
+      }
+    }
+  }
+}
+
+@include respond-to("(max-width: 47.5em)") {
+  .navigation__list {
+    width: calc(100% - 3.2rem);
+  }
+}
+
+.hamburger-icon {
+  width: 1.8rem;
+  height: 1.6rem;
+}
