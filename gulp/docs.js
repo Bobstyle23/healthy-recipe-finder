@@ -1,7 +1,7 @@
 const gulp = require("gulp");
 const fileInclude = require("gulp-file-include");
 const sass = require("gulp-sass")(require("sass"));
-const serverReload = require("gulp-server-livereload");
+const serverReload = require("browser-sync").create();
 const clean = require("gulp-clean");
 const fs = require("fs");
 const sourceMaps = require("gulp-sourcemaps");
@@ -193,14 +193,17 @@ gulp.task("js:docs", () => {
     .pipe(gulp.dest("./docs/js"));
 });
 
-// NOTE: starts server
-gulp.task("server:docs", () => {
-  return gulp.src("./docs/").pipe(
-    serverReload({
-      livereload: true,
-      open: true,
-    }),
-  );
+//NOTE: starts server
+gulp.task("server:docs", (done) => {
+  serverReload.init({
+    server: {
+      baseDir: "./docs",
+    },
+    port: 8000,
+    open: true,
+    notify: false,
+  });
+  done();
 });
 
 // NOTE: clean docs folder
