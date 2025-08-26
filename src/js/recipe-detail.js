@@ -25,8 +25,8 @@ const suggestedRecipesContainer = document.querySelector(
 breadcrumbTitle.textContent = recipe.title;
 
 const images = `
-    <source srcset=.${recipe.image.large} media="(min-width: 48em)" type="image/webp" />    
-    <img src=.${recipe.image.small} />
+    <source srcset=${recipe.image.large} media="(min-width: 48em)" type="image/webp" />    
+    <img src=${recipe.image.small} />
   `;
 recipeImgContainer.innerHTML = images;
 
@@ -35,15 +35,15 @@ recipeDescription.textContent = recipe.overview;
 
 const prepDetails = `
    <div>
-    <img src="../img/svgicons/icon-servings.svg" class="recipe-detail__prep-icon" />
+    <img src="./img/svgicons/icon-servings.svg" class="recipe-detail__prep-icon" />
     <span>Servings: ${recipe.servings}</span>
   </div>
   <div>
-    <img src="../img/svgicons/icon-prep-time.svg" class="recipe-detail__prep-icon" />
+    <img src="./img/svgicons/icon-prep-time.svg" class="recipe-detail__prep-icon" />
     <span>Prep: ${recipe.prepMinutes} ${recipe.prepMinutes > 1 ? "mins" : "min"}</span>
   </div>
   <div>
-    <img src="../img/svgicons/icon-cook-time.svg" class="recipe-detail__prep-icon" />
+    <img src="./img/svgicons/icon-cook-time.svg" class="recipe-detail__prep-icon" />
     <span>Cook: ${recipe.cookMinutes} ${recipe.cookMinutes > 1 ? "mins" : "min"}</span>
   </div>
   `;
@@ -54,7 +54,7 @@ const ingredients = recipe.ingredients.map((ingredient) => {
        <li> 
         <article>
           <svg class="recipe-detail__ingredients-icon">
-           <use href="../img/svgsprite/sprite.symbol.svg#icon-bullet-point" />
+           <use href="./img/svgsprite/sprite.symbol.svg#icon-bullet-point" />
           </svg>
          <p>${ingredient}</p>
         </article>
@@ -69,7 +69,7 @@ const instructions = recipe.instructions.map((instruction) => {
        <li> 
         <article>
           <svg class="recipe-detail__instructions-icon">
-           <use href="../img/svgsprite/sprite.symbol.svg#icon-bullet-point" />
+           <use href="./img/svgsprite/sprite.symbol.svg#icon-bullet-point" />
           </svg>
          <p>${instruction}</p>
         </article>
