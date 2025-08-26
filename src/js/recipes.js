@@ -12,7 +12,7 @@ const currentFilters = {
 
 //NOTE: Recipes cook & prep time options
 [...recipesSelectOptions].forEach((select) => {
-  select.addEventListener("click", (e) => {
+  select.addEventListener("click", () => {
     const selectOpened = select.getAttribute("aria-expanded");
     select.focus();
     if (selectOpened === "false") {
