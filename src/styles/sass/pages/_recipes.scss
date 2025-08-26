@@ -218,7 +218,7 @@
     0 8px 16px -9px rgba(22, 58, 52, 0.16);
   overflow: hidden;
 
-  @include respond-to($breakpoint-large-tablets) {
+  @include respond-to($breakpoint-tablets) {
     display: grid;
     grid-template-rows: subgrid;
     grid-row: span 4;

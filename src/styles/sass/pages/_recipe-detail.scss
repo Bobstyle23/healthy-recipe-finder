@@ -1,6 +1,10 @@
 .recipe-detail {
   padding-block: $spacing-48;
 
+  @include respond-to($breakpoint-desktops) {
+    padding-block-end: $spacing-96;
+  }
+
   &__header {
     @extend %flexbox;
     flex-flow: row nowrap;
@@ -28,6 +32,12 @@
     gap: $spacing-40;
     padding-block-end: $spacing-48;
     border-bottom: 1px solid $clr-neutral-300;
+
+    @include respond-to($breakpoint-desktops) {
+      grid-template-columns: 58rem 1fr;
+      column-gap: $spacing-40;
+      padding-block-end: $spacing-64;
+    }
   }
 
   &__image img {
@@ -43,6 +53,10 @@
     @extend %text-preset-2-mob;
     color: $clr-neutral-900;
     text-wrap: auto;
+
+    @include respond-to($breakpoint-desktops) {
+      font-size: 4.8rem;
+    }
   }
 
   &__desc {
@@ -90,6 +104,11 @@
       height: 2.4rem;
     }
 
+    &-list {
+      @extend %flexbox;
+      gap: $spacing-8;
+    }
+
     &-list article {
       @extend %grid;
       grid-template-columns: auto 1fr;
@@ -111,6 +130,10 @@
     gap: $spacing-24;
     padding-block-start: $spacing-48;
 
+    @include respond-to($breakpoint-desktops) {
+      padding-block-start: $spacing-64;
+    }
+
     &-title {
       @extend %text-preset-3;
       color: $clr-neutral-900;
@@ -118,7 +141,7 @@
 
     &-box {
       @extend %grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(34rem, 100%), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(37.6rem, 100%), 1fr));
       gap: $spacing-32;
     }
   }
