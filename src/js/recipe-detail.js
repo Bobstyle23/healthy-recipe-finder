@@ -128,7 +128,7 @@ const moreRecipesToCheck = suggestedRecipes.map((recipe) => {
          <p>Cook: ${recipe.cookMinutes} ${recipe.cookMinutes > 1 ? "mins" : "min"} </p>
        </div>
        </div>
-      <a href="../recipe-detail.html?id=${recipe.slug}" class="recipe__link button">View Recipe</a>
+      <a href="./recipe-detail.html?id=${recipe.slug}" class="recipe__link button">View Recipe</a>
     </article>
   `;
 });
