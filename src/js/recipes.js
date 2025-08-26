@@ -2,6 +2,7 @@ const recipesContainer = document.querySelector(".recipes__container");
 const recipesSelectOptions = document.querySelectorAll(".recipes__select");
 const prepTimeOptions = document.getElementsByName("prepTime");
 const cookTimeOptions = document.getElementsByName("cookTime");
+const recipeSearchValue = document.querySelector(".recipes__search");
 const recipesData = JSON.parse(sessionStorage.getItem("recipes"));
 
 const currentFilters = {
@@ -27,6 +28,24 @@ function updateFilters(e) {
   const filterType = e.target.name;
   currentFilters[filterType] = Number(e.target.value);
 }
+
+function debounce(callback, delay = 1000) {
+  let time;
+  return (...args) => {
+    clearTimeout(time);
+    time = setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
+}
+
+const getSearchValue = debounce((event) => {
+  currentFilters.searchValue = event.target.value;
+}, 500);
+
+recipeSearchValue.addEventListener("input", (event) => {
+  getSearchValue(event);
+});
 
 prepTimeOptions.forEach((option, idx) => {
   option.addEventListener("click", (e) => {
