@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Healthy Recipe Finder | Detail</title>
+    <link href="./css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    @@include("./navigation.html")
+    <div class="recipe-detail container">
+      <header class="recipe-detail__header">
+        <span class="recipe-detail__breadcrumb">Recipes</span>
+        <span class="recipe-detail__breadcrumb">/</span>
+        <span class="recipe-detail__name"></span>
+      </header>
+
+      <main class="recipe-detail__content">
+        <picture class="recipe-detail__image"></picture>
+        <section class="recipe-detail__info">
+          <h3 class="recipe-detail__title"></h3>
+          <p class="recipe-detail__desc"></p>
+          <div class="recipe-detail__prep-details"></div>
+          <div class="recipe-detail__ingredients">
+            <h4 class="recipe-detail__ingredients-title">Ingredients:</h4>
+            <ul class="recipe-detail__ingredients-list" role="list"></ul>
+          </div>
+          <div class="recipe-detail__instructions">
+            <h4 class="recipe-detail__instructions-title">Instructions:</h4>
+            <ul class="recipe-detail__instructions-list" role="list"></ul>
+          </div>
+        </section>
+      </main>
+
+      <section class="recipe-detail__suggestions">
+        <h2 class="recipe-detail__suggestions-title">More recipes</h2>
+        <article class="suggestion-card"></article>
+        <article class="suggestion-card"></article>
+        <article class="suggestion-card"></article>
+      </section>
+    </div>
+
+    <div class="divider"></div>
+    @@include("./footer.html")
+
+    <script src="./js/recipeDetail.bundle.js"></script>
+  </body>
+</html>

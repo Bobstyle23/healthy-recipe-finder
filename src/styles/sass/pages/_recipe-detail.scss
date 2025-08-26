@@ -1,0 +1,102 @@
+.recipe-detail {
+  padding-block: $spacing-48;
+
+  &__header {
+    @extend %flexbox;
+    flex-flow: row nowrap;
+    gap: $spacing-6;
+  }
+
+  &__breadcrumb,
+  &__name {
+    @extend %text-preset-7;
+    color: $clr-neutral-900;
+    display: inline-block;
+    margin-block-end: $spacing-16;
+  }
+
+  &__breadcrumb {
+    opacity: 0.6;
+  }
+
+  &__content {
+    @extend %grid;
+    gap: $spacing-40;
+  }
+
+  &__image img {
+    border-radius: $radius-10;
+  }
+
+  &__info {
+    @extend %flexbox;
+    gap: $spacing-20;
+  }
+
+  &__title {
+    @extend %text-preset-2-mob;
+    color: $clr-neutral-900;
+    text-wrap: auto;
+  }
+
+  &__desc {
+    @extend %text-preset-6;
+    color: $clr-neutral-600;
+    text-wrap: auto;
+  }
+
+  &__prep-details {
+    @extend %flexbox;
+    flex-flow: row wrap;
+    column-gap: $spacing-16;
+    row-gap: $spacing-8;
+
+    div {
+      @extend %flexbox;
+      flex-flow: row nowrap;
+      gap: $spacing-8;
+      align-items: center;
+    }
+  }
+
+  &__prep-details div span {
+    @extend %text-preset-7;
+    color: $clr-neutral-900;
+  }
+
+  &__prep-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &__ingredients,
+  &__instructions {
+    @extend %flexbox;
+    gap: $spacing-16;
+
+    &-title {
+      @extend %text-preset-4;
+      color: $clr-neutral-900;
+    }
+
+    &-icon {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    &-list article {
+      @extend %grid;
+      grid-template-columns: auto 1fr;
+      gap: $spacing-8;
+    }
+
+    &-list li {
+      @extend %text-preset-6;
+      color: $clr-neutral-600;
+    }
+
+    &-list li p {
+      text-wrap: auto;
+    }
+  }
+}
