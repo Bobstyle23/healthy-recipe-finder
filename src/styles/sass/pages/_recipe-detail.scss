@@ -22,6 +22,8 @@
   &__content {
     @extend %grid;
     gap: $spacing-40;
+    padding-block-end: $spacing-48;
+    border-bottom: 1px solid $clr-neutral-300;
   }
 
   &__image img {
@@ -97,6 +99,23 @@
 
     &-list li p {
       text-wrap: auto;
+    }
+  }
+
+  &__suggestions {
+    @extend %flexbox;
+    gap: $spacing-24;
+    padding-block-start: $spacing-48;
+
+    &-title {
+      @extend %text-preset-3;
+      color: $clr-neutral-900;
+    }
+
+    &-box {
+      @extend %grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(34rem, 100%), 1fr));
+      gap: $spacing-32;
     }
   }
 }
