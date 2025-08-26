@@ -1,18 +1,41 @@
 const recipesContainer = document.querySelector(".recipes__container");
 const recipesSelectOptions = document.querySelectorAll(".recipes__select");
-
+const prepTimeOptions = document.getElementsByName("prepTime");
+const cookTimeOptions = document.getElementsByName("cookTime");
 const recipesData = JSON.parse(sessionStorage.getItem("recipes"));
+
+const currentFilters = {
+  prepTime: 0,
+  cookTime: 0,
+  searchValue: "",
+};
 
 //NOTE: Recipes cook & prep time options
 [...recipesSelectOptions].forEach((select) => {
   select.addEventListener("click", (e) => {
     const selectOpened = select.getAttribute("aria-expanded");
+    select.focus();
     if (selectOpened === "false") {
       select.setAttribute("aria-expanded", "true");
     } else {
       select.setAttribute("aria-expanded", "false");
     }
   });
+});
+
+function updateFilters(e) {
+  const filterType = e.target.name;
+  currentFilters[filterType] = Number(e.target.value);
+}
+
+prepTimeOptions.forEach((option, idx) => {
+  option.addEventListener("click", (e) => {
+    updateFilters(e);
+  });
+});
+
+cookTimeOptions.forEach((option) => {
+  option.addEventListener("click", (e) => updateFilters(e));
 });
 
 const recipes = recipesData.map((recipe) => {
