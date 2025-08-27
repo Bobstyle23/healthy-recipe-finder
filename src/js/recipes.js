@@ -26,6 +26,30 @@ const currentFilters = {
   searchValue: "",
 };
 
+//PERF: for better animation (reference)
+// function addViewTransitionName() {
+//   [...recipesContainer.children].map((recipe, idx) => {
+//     const recipeId = `recipe-${idx + 1}`;
+//     recipe.style.viewTransitionName = `card-${recipeId}`;
+//   });
+// }
+
+function filterRecipes() {
+  let recipes = recipesData.reduce((filteredRecipes, currentRecipe) => {
+    if (
+      (currentFilters.prepTime &&
+        currentRecipe.prepMinutes === currentFilters.prepTime) ||
+      (currentFilters.cookTime &&
+        currentRecipe.cookMinutes === currentFilters.cookTime)
+    ) {
+      filteredRecipes.push(currentRecipe);
+    }
+    return filteredRecipes;
+  }, []);
+
+  return recipes.length > 0 ? recipes : recipesData;
+}
+
 function updateFilters(e) {
   const filterType = e.target.name;
   currentFilters[filterType] = Number(e.target.value);
@@ -34,10 +58,18 @@ function updateFilters(e) {
       title.textContent = `${e.target.value} ${Number(e.target.value) < 1 ? "minute" : "minutes"}`;
     }
   });
+
+  const recipes = filterRecipes();
+  if (!document.startViewTransition()) {
+    renderRecipes(recipes);
+    return;
+  }
+  document.startViewTransition(() => renderRecipes(recipes));
 }
 
 function clearFilters(e) {
   const filterType = e.target.name;
+  if (!filterType) return;
   currentFilters[filterType] = null;
   optionTitles.forEach((title) => {
     if (title.dataset.name === filterType) {
@@ -65,7 +97,7 @@ recipeSearchValue.addEventListener("input", (event) => {
   getSearchValue(event);
 });
 
-prepTimeOptions.forEach((option, idx) => {
+prepTimeOptions.forEach((option) => {
   option.addEventListener("click", (e) => {
     updateFilters(e);
   });
@@ -83,8 +115,12 @@ cookTimeOptions.forEach((option) => {
   });
 });
 
-const recipes = recipesData.map((recipe) => {
-  return `
+function renderRecipes(recipesArray = recipesData) {
+  const recipes = recipesArray.map((recipe) => {
+    // if (recipe.ingredients.join("").includes("eggs")) {
+    //   console.log(recipe);
+    // }
+    return `
     <article class="recipe">
       <picture class="recipe__image">
           <source
@@ -120,6 +156,9 @@ const recipes = recipesData.map((recipe) => {
       <a href="./recipe-detail.html?id=${recipe.slug}" class="recipe__link button">View Recipe</a>
     </article>
 `;
-});
+  });
 
-recipesContainer.innerHTML = recipes.join("");
+  recipesContainer.innerHTML = recipes.join("");
+}
+
+renderRecipes();
