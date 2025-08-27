@@ -37,4 +37,5 @@
 .no-result {
   @extend %text-preset-6;
   color: $clr-orange;
+  text-wrap: auto;
 }
