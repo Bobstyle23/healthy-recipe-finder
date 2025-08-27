@@ -177,6 +177,10 @@ function renderRecipes(recipesArray = recipesData) {
 `;
   });
 
+  if (!recipes.length) {
+    recipesContainer.innerHTML = `<p class="no-result">No recipes found. Try adjusting your filters.</p>`;
+    return;
+  }
   recipesContainer.innerHTML = recipes.join("");
 }
 
