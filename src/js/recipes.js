@@ -37,25 +37,48 @@ const currentFilters = {
 //   });
 // }
 
-function filterRecipes() {
-  let recipes = recipesData.reduce((filteredRecipes, currentRecipe) => {
-    if (
-      (currentFilters.prepTime &&
-        currentRecipe.prepMinutes === currentFilters.prepTime) ||
-      (currentFilters.cookTime &&
-        currentRecipe.cookMinutes === currentFilters.cookTime)
-    ) {
-      filteredRecipes.push(currentRecipe);
-    }
-    return filteredRecipes;
-  }, []);
+function renderRecipesWithAnimation(recipesArray) {
+  if (!document.startViewTransition()) {
+    renderRecipes(recipesArray);
+    return;
+  }
 
-  return recipes.length > 0 ? recipes : recipesData;
+  document.startViewTransition(() => renderRecipes(recipesArray));
+}
+
+function filterRecipes() {
+  let recipes = recipesData.filter((recipe) => {
+    let matches = true;
+
+    if (currentFilters.prepTime) {
+      matches = matches && recipe.prepMinutes === currentFilters.prepTime;
+    }
+
+    if (currentFilters.cookTime) {
+      matches = matches && recipe.cookMinutes === currentFilters.cookTime;
+    }
+
+    if (currentFilters.searchValue) {
+      const searchValue = currentFilters.searchValue.toLowerCase();
+      const title = recipe.title.toLowerCase().includes(searchValue);
+      const ingredients = recipe.ingredients
+        .join("")
+        .toLowerCase()
+        .includes(searchValue);
+
+      matches = matches && (title || ingredients);
+    }
+
+    return matches;
+  });
+
+  return recipes;
 }
 
 function updateFilters(e) {
   const filterType = e.target.name;
-  currentFilters[filterType] = Number(e.target.value);
+  currentFilters[filterType] =
+    filterType !== "searchValue" ? Number(e.target.value) : e.target.value;
   optionTitles.forEach((title) => {
     if (title.dataset.name === filterType) {
       title.textContent = `${e.target.value} ${Number(e.target.value) < 1 ? "minute" : "minutes"}`;
@@ -63,11 +86,7 @@ function updateFilters(e) {
   });
 
   const recipes = filterRecipes();
-  if (!document.startViewTransition()) {
-    renderRecipes(recipes);
-    return;
-  }
-  document.startViewTransition(() => renderRecipes(recipes));
+  renderRecipesWithAnimation(recipes);
 }
 
 function clearFilters(e) {
@@ -99,7 +118,7 @@ function debounce(callback, delay = 1000) {
 }
 
 const getSearchValue = debounce((event) => {
-  currentFilters.searchValue = event.target.value;
+  updateFilters(event);
 }, 500);
 
 recipeSearchValue.addEventListener("input", (event) => {
@@ -120,9 +139,6 @@ recipeSearchValue.addEventListener("input", (event) => {
 
 function renderRecipes(recipesArray = recipesData) {
   const recipes = recipesArray.map((recipe) => {
-    // if (recipe.ingredients.join("").includes("eggs")) {
-    //   console.log(recipe);
-    // }
     return `
     <article class="recipe">
       <picture class="recipe__image">
