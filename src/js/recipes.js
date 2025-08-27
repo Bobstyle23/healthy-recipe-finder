@@ -2,14 +2,10 @@ const recipesContainer = document.querySelector(".recipes__container");
 const recipesSelectOptions = document.querySelectorAll(".recipes__select");
 const prepTimeOptions = document.getElementsByName("prepTime");
 const cookTimeOptions = document.getElementsByName("cookTime");
+const optionTitles = document.querySelectorAll(".recipes__select p");
 const recipeSearchValue = document.querySelector(".recipes__search");
+const optionsClearBtn = document.querySelectorAll(".recipes__select-btn");
 const recipesData = JSON.parse(sessionStorage.getItem("recipes"));
-
-const currentFilters = {
-  prepTime: 0,
-  cookTime: 0,
-  searchValue: "",
-};
 
 //NOTE: Recipes cook & prep time options
 [...recipesSelectOptions].forEach((select) => {
@@ -24,9 +20,31 @@ const currentFilters = {
   });
 });
 
+const currentFilters = {
+  prepTime: null,
+  cookTime: null,
+  searchValue: "",
+};
+
 function updateFilters(e) {
   const filterType = e.target.name;
   currentFilters[filterType] = Number(e.target.value);
+  optionTitles.forEach((title) => {
+    if (title.dataset.name === filterType) {
+      title.textContent = `${e.target.value} ${Number(e.target.value) < 1 ? "minute" : "minutes"}`;
+    }
+  });
+}
+
+function clearFilters(e) {
+  const filterType = e.target.name;
+  currentFilters[filterType] = null;
+  optionTitles.forEach((title) => {
+    if (title.dataset.name === filterType) {
+      title.textContent =
+        filterType === "prepTime" ? "Max Prep Time" : "Max Cook Time";
+    }
+  });
 }
 
 function debounce(callback, delay = 1000) {
@@ -54,7 +72,15 @@ prepTimeOptions.forEach((option, idx) => {
 });
 
 cookTimeOptions.forEach((option) => {
-  option.addEventListener("click", (e) => updateFilters(e));
+  option.addEventListener("click", (e) => {
+    updateFilters(e);
+  });
+});
+
+[...optionsClearBtn].forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    clearFilters(e);
+  });
 });
 
 const recipes = recipesData.map((recipe) => {

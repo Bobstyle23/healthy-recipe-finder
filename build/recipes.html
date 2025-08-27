@@ -90,9 +90,10 @@
             aria-expanded="false"
             aria-label="Select maximum preparation time"
             role="select-box"
+            data-name="prepTime"
             tabindex="0"
           >
-            <p>Max Prep Time</p>
+            <p data-name="prepTime">Max Prep Time</p>
             <svg class="recipes__select-icon">
               <use
                 href="./img/svgsprite/sprite.symbol.svg#icon-chevron-down"
@@ -103,7 +104,7 @@
               <div>
                 <input type="radio" name="prepTime" id="0" value="0" />
                 <span class="circle"></span>
-                <label for="0">0 minutes</label>
+                <label for="0">0 minute</label>
               </div>
               <div>
                 <input type="radio" name="prepTime" id="5" value="5" />
@@ -115,7 +116,11 @@
                 <span class="circle"></span>
                 <label for="10">10 minutes</label>
               </div>
-              <button type="button" class="recipes__select-btn prep-time-btn">
+              <button
+                type="button"
+                name="prepTime"
+                class="recipes__select-btn prep-time-btn"
+              >
                 Clear
               </button>
             </div>
@@ -126,8 +131,9 @@
             aria-label="Select maximum cooking time"
             role="select-box"
             tabindex="0"
+            data-name="cookTime"
           >
-            <p>Max Cook Time</p>
+            <p data-name="cookTime">Max Cook Time</p>
             <svg class="recipes__select-icon">
               <use
                 href="./img/svgsprite/sprite.symbol.svg#icon-chevron-down"
@@ -137,7 +143,7 @@
               <div>
                 <input type="radio" name="cookTime" id="0-cook" value="0" />
                 <span class="circle"></span>
-                <label for="0-cook">0 minutes</label>
+                <label for="0-cook">0 minute</label>
               </div>
               <div>
                 <input type="radio" name="cookTime" id="5-cook" value="5" />
@@ -160,7 +166,11 @@
                 <label for="20-cook">20 minutes</label>
               </div>
 
-              <button type="button" class="recipes__select-btn cook-time-btn">
+              <button
+                type="button"
+                name="cookTime"
+                class="recipes__select-btn cook-time-btn"
+              >
                 Clear
               </button>
             </div>
