@@ -1,5 +1,8 @@
 const recipesContainer = document.querySelector(".recipes__container");
 const recipesSelectOptions = document.querySelectorAll(".recipes__select");
+const selectOptions = document.querySelectorAll(
+  ".recipes__select-options div input",
+);
 const prepTimeOptions = document.getElementsByName("prepTime");
 const cookTimeOptions = document.getElementsByName("cookTime");
 const optionTitles = document.querySelectorAll(".recipes__select p");
@@ -77,6 +80,12 @@ function clearFilters(e) {
         filterType === "prepTime" ? "Max Prep Time" : "Max Cook Time";
     }
   });
+
+  selectOptions.forEach((option) => {
+    if (option.checked && option.name === filterType) {
+      option.checked = false;
+    }
+  });
 }
 
 function debounce(callback, delay = 1000) {
@@ -97,15 +106,9 @@ recipeSearchValue.addEventListener("input", (event) => {
   getSearchValue(event);
 });
 
-prepTimeOptions.forEach((option) => {
-  option.addEventListener("click", (e) => {
-    updateFilters(e);
-  });
-});
-
-cookTimeOptions.forEach((option) => {
-  option.addEventListener("click", (e) => {
-    updateFilters(e);
+[...prepTimeOptions, ...cookTimeOptions].forEach((option) => {
+  option.addEventListener("click", (event) => {
+    updateFilters(event);
   });
 });
 
