@@ -2,6 +2,10 @@
   border-bottom: 1px solid $clr-neutral-300;
   max-width: 144rem;
   margin-inline: auto;
+
+  .container {
+    max-width: 132rem;
+  }
 }
 
 .navigation {

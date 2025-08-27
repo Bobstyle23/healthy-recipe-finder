@@ -10,6 +10,7 @@
     @extend %flexbox;
     gap: $spacing-40;
 
+  
     @include respond-to($breakpoint-large-tablets) {
       gap: $spacing-80;
     }
@@ -86,6 +87,10 @@
 
   &__link {
     @extend %text-preset-5;
+
+    @include respond-to($breakpoint-desktops) {
+      padding-inline: $spacing-32;
+    }
   }
 
   &__image img {
