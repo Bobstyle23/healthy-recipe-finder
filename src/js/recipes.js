@@ -1,17 +1,18 @@
+const recipesData = JSON.parse(sessionStorage.getItem("recipes"));
 const recipesContainer = document.querySelector(".recipes__container");
-const recipesSelectOptions = document.querySelectorAll(".recipes__select");
+const recipesSelectOptionsContainer =
+  document.querySelectorAll(".recipes__select");
 const selectOptions = document.querySelectorAll(
   ".recipes__select-options div input",
 );
 const prepTimeOptions = document.getElementsByName("prepTime");
 const cookTimeOptions = document.getElementsByName("cookTime");
-const optionTitles = document.querySelectorAll(".recipes__select p");
+const filterTitles = document.querySelectorAll(".recipes__select p");
 const recipeSearchValue = document.querySelector(".recipes__search");
-const optionsClearBtn = document.querySelectorAll(".recipes__select-btn");
-const recipesData = JSON.parse(sessionStorage.getItem("recipes"));
+const filtersClearBtn = document.querySelectorAll(".recipes__select-btn");
 
 //NOTE: Recipes cook & prep time options
-[...recipesSelectOptions].forEach((select) => {
+[...recipesSelectOptionsContainer].forEach((select) => {
   select.addEventListener("click", () => {
     const selectOpened = select.getAttribute("aria-expanded");
     select.focus();
@@ -79,7 +80,7 @@ function updateFilters(e) {
   const filterType = e.target.name;
   currentFilters[filterType] =
     filterType !== "searchValue" ? Number(e.target.value) : e.target.value;
-  optionTitles.forEach((title) => {
+  filterTitles.forEach((title) => {
     if (title.dataset.name === filterType) {
       title.textContent = `${e.target.value} ${Number(e.target.value) < 1 ? "minute" : "minutes"}`;
     }
@@ -93,7 +94,7 @@ function clearFilters(e) {
   const filterType = e.target.name;
   if (!filterType) return;
   currentFilters[filterType] = null;
-  optionTitles.forEach((title) => {
+  filterTitles.forEach((title) => {
     if (title.dataset.name === filterType) {
       title.textContent =
         filterType === "prepTime" ? "Max Prep Time" : "Max Cook Time";
@@ -131,17 +132,17 @@ recipeSearchValue.addEventListener("input", (event) => {
   });
 });
 
-[...optionsClearBtn].forEach((btn) => {
+[...filtersClearBtn].forEach((btn) => {
   btn.addEventListener("click", function (e) {
     clearFilters(e);
   });
 });
 
 function renderRecipes(recipesArray = recipesData) {
-  const recipes = recipesArray.map((recipe) => {
+  const recipes = recipesArray.map((recipe, idx) => {
     return `
     <article class="recipe">
-      <picture class="recipe__image">
+      <picture class="recipe__image" >
           <source
             srcset=${recipe.image.large}
             type="image/webp"
