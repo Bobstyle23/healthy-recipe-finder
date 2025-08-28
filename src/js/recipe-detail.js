@@ -1,57 +1,64 @@
-const recipesData = JSON.parse(sessionStorage.getItem("recipes"));
-const searchParam = new URLSearchParams(window.location.search);
+class RecipeDetail {
+  constructor() {
+    this.recipesData = JSON.parse(sessionStorage.getItem("recipes")) || [];
+    this.searchParam = new URLSearchParams(window.location.search);
+    this.recipeSlug = this.searchParam.get("id");
 
-const recipeSlug = searchParam.get("id");
-const recipe = recipesData.find((recipe) => recipe.slug === recipeSlug);
+    this.recipe = this.recipesData.find(
+      (recipe) => recipe.slug === this.recipeSlug,
+    );
 
-const breadcrumbTitle = document.querySelector(".recipe-detail__name");
-const recipeImgContainer = document.querySelector(".recipe-detail__image");
-const recipeTitle = document.querySelector(".recipe-detail__title");
-const recipeDescription = document.querySelector(".recipe-detail__desc");
-const recipePrepDetailsContainer = document.querySelector(
-  ".recipe-detail__prep-details",
-);
-const recipeIngredientsContainer = document.querySelector(
-  ".recipe-detail__ingredients-list",
-);
-const recipeInstructionsContainer = document.querySelector(
-  ".recipe-detail__instructions-list",
-);
+    this.breadcrumbTitle = document.querySelector(".recipe-detail__name");
+    this.recipeImgContainer = document.querySelector(".recipe-detail__image");
+    this.recipeTitle = document.querySelector(".recipe-detail__title");
+    this.recipeDescription = document.querySelector(".recipe-detail__desc");
+    this.recipePrepDetailsContainer = document.querySelector(
+      ".recipe-detail__prep-details",
+    );
+    this.recipeIngredientsContainer = document.querySelector(
+      ".recipe-detail__ingredients-list",
+    );
+    this.recipeInstructionsContainer = document.querySelector(
+      ".recipe-detail__instructions-list",
+    );
+    this.suggestedRecipesContainer = document.querySelector(
+      ".recipe-detail__suggestions-box",
+    );
 
-const suggestedRecipesContainer = document.querySelector(
-  ".recipe-detail__suggestions-box",
-);
+    this.renderRecipeDetail();
+  }
 
-breadcrumbTitle.textContent = recipe.title;
+  renderRecipeDetail() {
+    this.breadcrumbTitle.textContent = this.recipe.title;
+    this.images = `
+     <source srcset=${this.recipe.image.large} media="(min-width: 48em)" type="image/webp" />
+     <img src=${this.recipe.image.small} />
+   `;
 
-const images = `
-    <source srcset=${recipe.image.large} media="(min-width: 48em)" type="image/webp" />    
-    <img src=${recipe.image.small} />
-  `;
-recipeImgContainer.innerHTML = images;
+    this.recipeImgContainer.innerHTML = this.images;
+    this.recipeTitle.textContent = this.recipe.title;
+    this.recipeDescription.textContent = this.recipe.overview;
 
-recipeTitle.textContent = recipe.title;
-recipeDescription.textContent = recipe.overview;
+    this.prepDetails = `
+     <div>
+       <img src="./img/svgicons/icon-servings.svg" class="recipe-detail__prep-icon" />
+       <span>Servings: ${this.recipe.servings}</span>
+     </div>
+     <div>
+       <img src="./img/svgicons/icon-prep-time.svg" class="recipe-detail__prep-icon" />
+       <span>Prep: ${this.recipe.prepMinutes} ${this.recipe.prepMinutes > 1 ? "mins" : "min"}</span>
+     </div>
+     <div>
+       <img src="./img/svgicons/icon-cook-time.svg" class="recipe-detail__prep-icon" />
+       <span>Cook: ${this.recipe.cookMinutes} ${this.recipe.cookMinutes > 1 ? "mins" : "min"}</span>
+     </div>
+   `;
 
-const prepDetails = `
-   <div>
-    <img src="./img/svgicons/icon-servings.svg" class="recipe-detail__prep-icon" />
-    <span>Servings: ${recipe.servings}</span>
-  </div>
-  <div>
-    <img src="./img/svgicons/icon-prep-time.svg" class="recipe-detail__prep-icon" />
-    <span>Prep: ${recipe.prepMinutes} ${recipe.prepMinutes > 1 ? "mins" : "min"}</span>
-  </div>
-  <div>
-    <img src="./img/svgicons/icon-cook-time.svg" class="recipe-detail__prep-icon" />
-    <span>Cook: ${recipe.cookMinutes} ${recipe.cookMinutes > 1 ? "mins" : "min"}</span>
-  </div>
-  `;
-recipePrepDetailsContainer.innerHTML = prepDetails;
+    this.recipePrepDetailsContainer.innerHTML = this.prepDetails;
 
-const ingredients = recipe.ingredients.map((ingredient) => {
-  return `
-       <li> 
+    this.ingredients = this.recipe.ingredients.map((ingredient) => {
+      return `
+       <li>
         <article>
           <svg class="recipe-detail__ingredients-icon">
            <use href="./img/svgsprite/sprite.symbol.svg#icon-bullet-point" />
@@ -59,14 +66,13 @@ const ingredients = recipe.ingredients.map((ingredient) => {
          <p>${ingredient}</p>
         </article>
       </li>
-`;
-});
+          `;
+    });
+    this.recipeIngredientsContainer.innerHTML = this.ingredients.join("");
 
-recipeIngredientsContainer.innerHTML = ingredients.join("");
-
-const instructions = recipe.instructions.map((instruction) => {
-  return `
-       <li> 
+    this.instructions = this.recipe.instructions.map((instruction) => {
+      return `
+       <li>
         <article>
           <svg class="recipe-detail__instructions-icon">
            <use href="./img/svgsprite/sprite.symbol.svg#icon-bullet-point" />
@@ -75,28 +81,28 @@ const instructions = recipe.instructions.map((instruction) => {
         </article>
       </li>
 `;
-});
+    });
 
-recipeInstructionsContainer.innerHTML = instructions.join("");
+    this.recipeInstructionsContainer.innerHTML = this.instructions.join("");
 
-const filteredRecipes = recipesData.filter(
-  (currentRecipe) => currentRecipe.id !== recipe.id,
-);
+    this.filteredRecipes = this.recipesData.filter(
+      (currentRecipe) => currentRecipe.id !== this.recipe.id,
+    );
 
-const randomlyPickedRecipes = new Set();
+    this.randomlyPickedRecipes = new Set();
 
-while (
-  randomlyPickedRecipes.size < 3 &&
-  randomlyPickedRecipes.size < filteredRecipes.length
-) {
-  const randomIdx = Math.floor(Math.random() * filteredRecipes.length);
-  randomlyPickedRecipes.add(filteredRecipes[randomIdx]);
-}
+    while (
+      this.randomlyPickedRecipes.size < 3 &&
+      this.randomlyPickedRecipes.size < this.filteredRecipes.length
+    ) {
+      this.randomIdx = Math.floor(Math.random() * this.filteredRecipes.length);
+      this.randomlyPickedRecipes.add(this.filteredRecipes[this.randomIdx]);
+    }
 
-const suggestedRecipes = [...randomlyPickedRecipes];
+    this.suggestedRecipes = [...this.randomlyPickedRecipes];
 
-const moreRecipesToCheck = suggestedRecipes.map((recipe) => {
-  return `<article class="recipe">
+    this.moreRecipesToCheck = this.suggestedRecipes.map((recipe) => {
+      return `<article class="recipe">
       <picture class="recipe__image">
           <source
             srcset=${recipe.image.large}
@@ -131,6 +137,11 @@ const moreRecipesToCheck = suggestedRecipes.map((recipe) => {
       <a href="./recipe-detail.html?id=${recipe.slug}" class="recipe__link button">View Recipe</a>
     </article>
   `;
-});
+    });
 
-suggestedRecipesContainer.innerHTML = moreRecipesToCheck.join("");
+    this.suggestedRecipesContainer.innerHTML = this.moreRecipesToCheck.join("");
+    //NOTE: init() ends here
+  }
+}
+
+new RecipeDetail();
