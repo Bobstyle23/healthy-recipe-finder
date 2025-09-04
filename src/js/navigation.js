@@ -21,7 +21,7 @@ class Navigation {
   }
 
   static #extractLocation(location) {
-    return location.split("/").filter(Boolean).splice(2, 1).join("");
+    return location.split("/").filter(Boolean).slice(-1).join("");
   }
 
   cacheDOM() {
