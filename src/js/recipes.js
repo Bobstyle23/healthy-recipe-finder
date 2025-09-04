@@ -8,6 +8,12 @@
 
 class Recipe {
   constructor() {
+    this.cacheDOM();
+    this.initEvents();
+    this.renderRecipes();
+  }
+
+  cacheDOM() {
     this.recipesData = JSON.parse(sessionStorage.getItem("recipes")) || [];
     this.currentFilters = { prepTime: null, cookTime: null, searchValue: "" };
 
@@ -21,20 +27,28 @@ class Recipe {
     this.cookTimeOptions = document.getElementsByName("cookTime");
     this.filtersClearBtn = document.querySelectorAll(".recipes__select-btn");
     this.dropdownContainer = document.querySelectorAll(".recipes__select");
-
-    this.initEvents();
-    this.renderRecipes();
   }
 
   initEvents() {
     [...this.dropdownContainer].forEach((dropdown) => {
-      dropdown.addEventListener("click", () => {
-        const dropdownOpened = dropdown.getAttribute("aria-expanded");
-        dropdown.focus();
-        dropdown.setAttribute(
-          "aria-expanded",
-          dropdownOpened === "false" ? "true" : "false",
+      dropdown.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const dropdownOpen = dropdown.getAttribute("aria-expanded") === "true";
+
+        this.dropdownContainer.forEach((dropdown) =>
+          dropdown.setAttribute("aria-expanded", "false"),
         );
+
+        if (!dropdownOpen) {
+          dropdown.setAttribute("aria-expanded", "true");
+          dropdown.focus();
+        }
+      });
+    });
+
+    document.body.addEventListener("click", () => {
+      this.dropdownContainer.forEach((dropdown) => {
+        dropdown.setAttribute("aria-expanded", "false");
       });
     });
 
@@ -134,7 +148,7 @@ class Recipe {
   }
 
   renderRecipes(recipesArray = this.recipesData) {
-    const recipes = recipesArray.map((recipe, idx) => {
+    const recipes = recipesArray.map((recipe) => {
       return `
         <article class="recipe">
           <picture class="recipe__image">

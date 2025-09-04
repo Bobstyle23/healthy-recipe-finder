@@ -11,6 +11,10 @@ class Navigation {
     this.#initResizeObserver();
     this.checkActiveMenu();
     this.#initMobileToggle();
+
+    document.body.addEventListener("click", () => this.closeMobileNavigaiton());
+
+    window.addEventListener("scroll", () => this.closeMobileNavigaiton());
   }
 
   set activeMenuName(menuName) {
@@ -51,11 +55,17 @@ class Navigation {
   }
 
   #initMobileToggle() {
-    this.toggleNavigation.addEventListener("click", () => {
+    this.toggleNavigation.addEventListener("click", (event) => {
+      event.stopPropagation();
+
       const isOpen =
         this.toggleNavigation.getAttribute("aria-expanded") === "true";
       this.toggleNavigation.setAttribute("aria-expanded", !isOpen);
     });
+  }
+
+  closeMobileNavigaiton() {
+    this.toggleNavigation.setAttribute("aria-expanded", "false");
   }
 }
 
