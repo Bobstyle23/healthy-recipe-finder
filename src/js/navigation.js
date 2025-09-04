@@ -21,7 +21,11 @@ class Navigation {
   }
 
   static #extractLocation(location) {
-    return location.split("/").filter(Boolean).slice(-1).join("");
+    const parts = location.split("/").filter(Boolean);
+    if (location.endsWith("/")) {
+      return "index.html";
+    }
+    return parts[parts.length - 1] || "index.html";
   }
 
   cacheDOM() {
