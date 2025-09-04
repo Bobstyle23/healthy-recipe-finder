@@ -1,18 +1,43 @@
+const _activeMenu = new WeakMap();
+
 class Navigation {
   constructor() {
     this.toggleNavigation = document.querySelector(
       "[aria-controls='primary-navigation']",
     );
-    this.navigationMenu = document.querySelectorAll(".navigation__list li");
+    this.navigationMenu = document.querySelectorAll(".navigation__list li a");
     this.menuItems = [...this.navigationMenu].slice(0, 3);
 
     this.#initResizeObserver();
-    this.#initMenuState();
+    this.checkActiveMenu();
     this.#initMobileToggle();
+  }
+
+  set activeMenuName(menuName) {
+    if (!String(menuName)) {
+      throw new Error("Menu name must be a string!");
+    }
+    _activeMenu.set(this, menuName);
+  }
+
+  get activeMenuName() {
+    return _activeMenu.get(this);
   }
 
   static #extractLocation(location) {
     return location.split("/").filter(Boolean).splice(2, 1).join("");
+  }
+
+  checkActiveMenu() {
+    const currentLocation = Navigation.#extractLocation(window.location.href);
+    this.activeMenuName = currentLocation;
+
+    this.menuItems.forEach((menu) => {
+      menu.removeAttribute("data-active");
+      if (menu.getAttribute("href").includes(this.activeMenuName)) {
+        menu.setAttribute("data-active", "true");
+      }
+    });
   }
 
   #initResizeObserver() {
@@ -25,28 +50,6 @@ class Navigation {
     this.resizeObserver.observe(document.body);
   }
 
-  #initMenuState() {
-    const currentLocation = Navigation.#extractLocation(window.location.href);
-
-    if (currentLocation === "index.html") {
-      localStorage.setItem("activeMenuIdx", 0);
-    } else if (currentLocation === "recipes.html") {
-      localStorage.setItem("activeMenuIdx", 2);
-    }
-
-    this.menuItems.forEach((menu, index) => {
-      menu.addEventListener("click", () => {
-        localStorage.setItem("activeMenuIdx", index);
-      });
-    });
-
-    const savedIndex = localStorage.getItem("activeMenuIdx");
-    if (savedIndex !== null) {
-      this.menuItems.forEach((menu) => menu.removeAttribute("data-active"));
-      this.menuItems[savedIndex].setAttribute("data-active", "true");
-    }
-  }
-
   #initMobileToggle() {
     this.toggleNavigation.addEventListener("click", () => {
       const isOpen =
@@ -57,5 +60,3 @@ class Navigation {
 }
 
 const navigation = new Navigation();
-
-console.log(navigation);

@@ -36,6 +36,11 @@
 
     li {
       @extend %text-preset-7;
+    }
+
+    a {
+      color: $clr-neutral-900;
+
       position: relative;
 
       &::after {
@@ -54,10 +59,6 @@
         width: 100%;
         height: 0.3rem;
       }
-    }
-
-    a {
-      color: $clr-neutral-900;
     }
   }
 
@@ -120,8 +121,10 @@
       transition-behavior: allow-discrete;
 
       li {
-        &::after {
-          content: none;
+        a {
+          &::after {
+            content: none;
+          }
         }
         padding-inline: $spacing-8;
         padding-block: $spacing-12;
