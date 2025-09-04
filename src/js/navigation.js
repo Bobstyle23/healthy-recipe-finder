@@ -2,19 +2,11 @@ const _activeMenu = new WeakMap();
 
 class Navigation {
   constructor() {
-    this.toggleNavigation = document.querySelector(
-      "[aria-controls='primary-navigation']",
-    );
-    this.navigationMenu = document.querySelectorAll(".navigation__list li a");
-    this.menuItems = [...this.navigationMenu].slice(0, 3);
-
     this.#initResizeObserver();
+
+    this.cacheDOM();
     this.checkActiveMenu();
     this.#initMobileToggle();
-
-    document.body.addEventListener("click", () => this.closeMobileNavigaiton());
-
-    window.addEventListener("scroll", () => this.closeMobileNavigaiton());
   }
 
   set activeMenuName(menuName) {
@@ -30,6 +22,18 @@ class Navigation {
 
   static #extractLocation(location) {
     return location.split("/").filter(Boolean).splice(2, 1).join("");
+  }
+
+  cacheDOM() {
+    document.body.addEventListener("click", () => this.closeMobileNavigaiton());
+
+    window.addEventListener("scroll", () => this.closeMobileNavigaiton());
+
+    this.toggleNavigation = document.querySelector(
+      "[aria-controls='primary-navigation']",
+    );
+    this.navigationMenu = document.querySelectorAll(".navigation__list li a");
+    this.menuItems = [...this.navigationMenu].slice(0, 3);
   }
 
   checkActiveMenu() {
